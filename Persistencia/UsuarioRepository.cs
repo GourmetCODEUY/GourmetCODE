@@ -23,13 +23,21 @@ namespace Proyecto.Persistencia
                 using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
                 {
                     conexion.Open();
-                    string consulta = "INSERT INTO usuario (Usuario_Login, Contraseña_Login, Rol) " +
-                                      "VALUES (@UsuarioLogin, @ContraseñaLogin, @Rol)";
-                    MySqlCommand cmd = new MySqlCommand(consulta, conexion);
-                    cmd.Parameters.AddWithValue("@UsuarioLogin", usuario.Usuario_Login);
-                    cmd.Parameters.AddWithValue("@ContraseñaLogin", usuario.Contraseña_Login);
-                    cmd.Parameters.AddWithValue("@Rol", usuario.Rol);
-                    cmd.ExecuteNonQuery();
+                    //Inserta el usuario en la tabla "usuario"
+                    string consultaUsuario = "INSERT INTO usuario (Usuario_Login, Contraseña_Login) VALUES (@UsuarioLogin, @ContraseñaLogin)";
+                    MySqlCommand cmdUsuario = new MySqlCommand(consultaUsuario, conexion);
+                    cmdUsuario.Parameters.AddWithValue("@UsuarioLogin", usuario.Usuario_Login);
+                    cmdUsuario.Parameters.AddWithValue("@ContraseñaLogin", usuario.Contraseña_Login);
+
+                    cmdUsuario.ExecuteNonQuery();
+
+                    // Luego, inserta una fila en la tabla "rol" con la misma clave "Usuario_Login"
+                    string consultaRol = "INSERT INTO rol (Usuario_Login, Rol) VALUES (@UsuarioLogin, @Rol)";
+                    MySqlCommand cmdRol = new MySqlCommand(consultaRol, conexion);
+                    cmdRol.Parameters.AddWithValue("@UsuarioLogin", usuario.Usuario_Login);
+                    cmdRol.Parameters.AddWithValue("@Rol", usuario.Rol);
+
+                    cmdRol.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
@@ -45,17 +53,26 @@ namespace Proyecto.Persistencia
                 using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
                 {
                     conexion.Open();
-                    string consulta = "DELETE FROM usuario WHERE Usuario_Login = @UsuarioLogin";
-                    MySqlCommand cmd = new MySqlCommand(consulta, conexion);
-                    cmd.Parameters.AddWithValue("@UsuarioLogin", usuarioLogin);
-                    cmd.ExecuteNonQuery();
+                    // Eliminar de la tabla 'rol'
+                    string consultaRol = "DELETE FROM rol WHERE Usuario_Login = @UsuarioLogin";
+                    MySqlCommand cmdRol = new MySqlCommand(consultaRol, conexion);
+                    cmdRol.Parameters.AddWithValue("@UsuarioLogin", usuarioLogin);
+                    cmdRol.ExecuteNonQuery();
+
+                    // Eliminar de la tabla 'usuario' después de eliminar los registros relacionados en 'rol'
+                    string consultaUsuario = "DELETE FROM usuario WHERE Usuario_Login = @UsuarioLogin";
+                    MySqlCommand cmdUsuario = new MySqlCommand(consultaUsuario, conexion);
+                    cmdUsuario.Parameters.AddWithValue("@UsuarioLogin", usuarioLogin);
+                    cmdUsuario.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al eliminar el usuario de la base de datos.", ex);
+                // Agregar información sobre la excepción real al mensaje de error
+                throw new Exception("Error al eliminar el usuario de la base de datos. Detalles: " + ex.Message, ex);
             }
         }
+
 
         public DataTable ObtenerUsuarios()
         {
@@ -65,7 +82,8 @@ namespace Proyecto.Persistencia
                 using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
                 {
                     conexion.Open();
-                    string consulta = "SELECT Usuario_Login, Rol FROM usuario";
+                    string consulta = "SELECT u.Usuario_Login, r.Rol FROM usuario u " +
+                               "INNER JOIN rol r ON u.Usuario_Login = r.Usuario_Login";
                     MySqlCommand cmd = new MySqlCommand(consulta, conexion);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                     adapter.Fill(dt);
@@ -80,23 +98,56 @@ namespace Proyecto.Persistencia
 
         public void ModificarUsuario(string usuarioLogin, string nuevoUsuarioLogin, string nuevaContraseñaLogin, int nuevoRol)
         {
-            try
+            using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
             {
-                using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
+                try
                 {
                     conexion.Open();
-                    string consulta = "UPDATE usuario SET Usuario_Login = @NuevoUsuarioLogin, Contraseña_Login = @NuevaContraseñaLogin, Rol = @NuevoRol WHERE Usuario_Login = @UsuarioLogin";
-                    MySqlCommand cmd = new MySqlCommand(consulta, conexion);
-                    cmd.Parameters.AddWithValue("@NuevoUsuarioLogin", nuevoUsuarioLogin);
-                    cmd.Parameters.AddWithValue("@NuevaContraseñaLogin", nuevaContraseñaLogin);
-                    cmd.Parameters.AddWithValue("@NuevoRol", nuevoRol);
-                    cmd.Parameters.AddWithValue("@UsuarioLogin", usuarioLogin);
-                    cmd.ExecuteNonQuery();
+
+                    using (MySqlTransaction transaccion = conexion.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Actualizar la tabla 'usuario' primero
+                            string consultaActualizarUsuario = @"
+                        UPDATE usuario
+                        SET Usuario_Login = @NuevoUsuarioLogin, Contraseña_Login = @NuevaContraseñaLogin
+                        WHERE Usuario_Login = @UsuarioLogin;
+                    ";
+
+                            MySqlCommand cmdActualizarUsuario = new MySqlCommand(consultaActualizarUsuario, conexion, transaccion);
+                            cmdActualizarUsuario.Parameters.AddWithValue("@NuevoUsuarioLogin", nuevoUsuarioLogin);
+                            cmdActualizarUsuario.Parameters.AddWithValue("@NuevaContraseñaLogin", nuevaContraseñaLogin);
+                            cmdActualizarUsuario.Parameters.AddWithValue("@UsuarioLogin", usuarioLogin);
+                            cmdActualizarUsuario.ExecuteNonQuery();
+
+                            // Luego, actualizar la tabla 'rol'
+                            string consultaActualizarRol = @"
+                        UPDATE rol
+                        SET Usuario_Login = @NuevoUsuarioLogin
+                        WHERE Usuario_Login = @UsuarioLogin;
+                    ";
+
+                            MySqlCommand cmdActualizarRol = new MySqlCommand(consultaActualizarRol, conexion, transaccion);
+                            cmdActualizarRol.Parameters.AddWithValue("@NuevoUsuarioLogin", nuevoUsuarioLogin);
+                            cmdActualizarRol.Parameters.AddWithValue("@UsuarioLogin", usuarioLogin);
+                            cmdActualizarRol.ExecuteNonQuery();
+
+                            // Confirmar la transacción
+                            transaccion.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            // Si ocurre un error, hacer un rollback de la transacción
+                            transaccion.Rollback();
+                            throw new Exception("Error al modificar el usuario en la base de datos. Detalles: " + ex.Message, ex);
+                        }
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al modificar el usuario en la base de datos.", ex);
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al conectar a la base de datos. Detalles: " + ex.Message, ex);
+                }
             }
         }
     }

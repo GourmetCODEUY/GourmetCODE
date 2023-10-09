@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Maurizio\\Desktop\\GourmetCode-main\\proyecto.csproj": {}
+    "C:\\Users\\maurito\\Desktop\\GourmetCODE-main\\proyecto.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Maurizio\\Desktop\\GourmetCode-main\\proyecto.csproj": {
+    "C:\\Users\\maurito\\Desktop\\GourmetCODE-main\\proyecto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Maurizio\\Desktop\\GourmetCode-main\\proyecto.csproj",
+        "projectUniqueName": "C:\\Users\\maurito\\Desktop\\GourmetCODE-main\\proyecto.csproj",
         "projectName": "proyecto",
-        "projectPath": "C:\\Users\\Maurizio\\Desktop\\GourmetCode-main\\proyecto.csproj",
-        "packagesPath": "C:\\Users\\Maurizio\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Maurizio\\Desktop\\GourmetCode-main\\obj\\",
+        "projectPath": "C:\\Users\\maurito\\Desktop\\GourmetCODE-main\\proyecto.csproj",
+        "packagesPath": "C:\\Users\\maurito\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\maurito\\Desktop\\GourmetCODE-main\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Maurizio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\maurito\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
