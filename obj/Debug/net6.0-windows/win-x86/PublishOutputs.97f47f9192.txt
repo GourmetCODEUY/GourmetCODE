@@ -1,0 +1,16 @@
+C:\Users\maurito\Desktop\MIERDA\proyecto.exe
+C:\Users\maurito\Desktop\MIERDA\proyecto.dll
+C:\Users\maurito\Desktop\MIERDA\proyecto.deps.json
+C:\Users\maurito\Desktop\MIERDA\proyecto.runtimeconfig.json
+C:\Users\maurito\Desktop\MIERDA\proyecto.pdb
+C:\Users\maurito\Desktop\MIERDA\Google.Protobuf.dll
+C:\Users\maurito\Desktop\MIERDA\K4os.Compression.LZ4.dll
+C:\Users\maurito\Desktop\MIERDA\K4os.Compression.LZ4.Streams.dll
+C:\Users\maurito\Desktop\MIERDA\K4os.Hash.xxHash.dll
+C:\Users\maurito\Desktop\MIERDA\MySql.Data.dll
+C:\Users\maurito\Desktop\MIERDA\BouncyCastle.Crypto.dll
+C:\Users\maurito\Desktop\MIERDA\System.Diagnostics.DiagnosticSource.dll
+C:\Users\maurito\Desktop\MIERDA\System.IO.Pipelines.dll
+C:\Users\maurito\Desktop\MIERDA\System.Text.Encodings.Web.dll
+C:\Users\maurito\Desktop\MIERDA\System.Text.Json.dll
+C:\Users\maurito\Desktop\MIERDA\ZstdSharp.dll

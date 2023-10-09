@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\Users\maurito\Desktop\GourmetCODE-main\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Presentacion\FormAltaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormAutorizacionCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormBajaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormClienteSubMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormConsultaPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormConsultaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormConsultaProduccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormConsultaProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormEliminarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormModificacionCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormModificacionPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormNuevoPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormTransporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentacion\FormZonas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

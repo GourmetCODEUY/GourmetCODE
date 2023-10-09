@@ -1,0 +1,17 @@
+C:\Users\maurito\Desktop\SISVIANSA\proyecto.exe
+C:\Users\maurito\Desktop\SISVIANSA\proyecto.dll
+C:\Users\maurito\Desktop\SISVIANSA\proyecto.deps.json
+C:\Users\maurito\Desktop\SISVIANSA\proyecto.runtimeconfig.json
+C:\Users\maurito\Desktop\SISVIANSA\proyecto.dll.config
+C:\Users\maurito\Desktop\SISVIANSA\proyecto.pdb
+C:\Users\maurito\Desktop\SISVIANSA\Google.Protobuf.dll
+C:\Users\maurito\Desktop\SISVIANSA\K4os.Compression.LZ4.dll
+C:\Users\maurito\Desktop\SISVIANSA\K4os.Compression.LZ4.Streams.dll
+C:\Users\maurito\Desktop\SISVIANSA\K4os.Hash.xxHash.dll
+C:\Users\maurito\Desktop\SISVIANSA\MySql.Data.dll
+C:\Users\maurito\Desktop\SISVIANSA\BouncyCastle.Crypto.dll
+C:\Users\maurito\Desktop\SISVIANSA\System.Diagnostics.DiagnosticSource.dll
+C:\Users\maurito\Desktop\SISVIANSA\System.IO.Pipelines.dll
+C:\Users\maurito\Desktop\SISVIANSA\System.Text.Encodings.Web.dll
+C:\Users\maurito\Desktop\SISVIANSA\System.Text.Json.dll
+C:\Users\maurito\Desktop\SISVIANSA\ZstdSharp.dll
