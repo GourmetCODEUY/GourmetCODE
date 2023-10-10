@@ -32,17 +32,16 @@ namespace Proyecto.Persistencia
                     cmdUsuario.ExecuteNonQuery();
 
                     // Luego, inserta una fila en la tabla "rol" con la misma clave "Usuario_Login"
-                    string consultaRol = "INSERT INTO rol (Usuario_Login, Rol) VALUES (@UsuarioLogin, @Rol)";
+                    string consultaRol = "INSERT INTO rol (Rol, Usuario_Login) VALUES (@Rol, @Usuario_Login)";
                     MySqlCommand cmdRol = new MySqlCommand(consultaRol, conexion);
-                    cmdRol.Parameters.AddWithValue("@UsuarioLogin", usuario.Usuario_Login);
                     cmdRol.Parameters.AddWithValue("@Rol", usuario.Rol);
-
+                    cmdRol.Parameters.AddWithValue("@Usuario_Login", usuario.Usuario_Login);
                     cmdRol.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al insertar el usuario en la base de datos.", ex);
+                throw new Exception("Error al insertar el usuario en la base de datos." + ex.Message, ex);
             }
         }
 
@@ -109,29 +108,13 @@ namespace Proyecto.Persistencia
                         try
                         {
                             // Actualizar la tabla 'usuario' primero
-                            string consultaActualizarUsuario = @"
-                        UPDATE usuario
-                        SET Usuario_Login = @NuevoUsuarioLogin, Contraseña_Login = @NuevaContraseñaLogin
-                        WHERE Usuario_Login = @UsuarioLogin;
-                    ";
+                            string consultaActualizarUsuario = @"UPDATE usuario SET Usuario_Login = @NuevoUsuarioLogin, Contraseña_Login = @NuevaContraseñaLogin WHERE Usuario_Login = @UsuarioLogin;";
 
                             MySqlCommand cmdActualizarUsuario = new MySqlCommand(consultaActualizarUsuario, conexion, transaccion);
                             cmdActualizarUsuario.Parameters.AddWithValue("@NuevoUsuarioLogin", nuevoUsuarioLogin);
                             cmdActualizarUsuario.Parameters.AddWithValue("@NuevaContraseñaLogin", nuevaContraseñaLogin);
                             cmdActualizarUsuario.Parameters.AddWithValue("@UsuarioLogin", usuarioLogin);
                             cmdActualizarUsuario.ExecuteNonQuery();
-
-                            // Luego, actualizar la tabla 'rol'
-                            string consultaActualizarRol = @"
-                        UPDATE rol
-                        SET Usuario_Login = @NuevoUsuarioLogin
-                        WHERE Usuario_Login = @UsuarioLogin;
-                    ";
-
-                            MySqlCommand cmdActualizarRol = new MySqlCommand(consultaActualizarRol, conexion, transaccion);
-                            cmdActualizarRol.Parameters.AddWithValue("@NuevoUsuarioLogin", nuevoUsuarioLogin);
-                            cmdActualizarRol.Parameters.AddWithValue("@UsuarioLogin", usuarioLogin);
-                            cmdActualizarRol.ExecuteNonQuery();
 
                             // Confirmar la transacción
                             transaccion.Commit();

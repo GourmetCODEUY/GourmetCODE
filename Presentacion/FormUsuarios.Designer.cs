@@ -45,8 +45,10 @@
             lblMcontraseña = new Label();
             label3 = new Label();
             label4 = new Label();
+            pctbMod = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pctBoxVer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pctbMod).BeginInit();
             SuspendLayout();
             // 
             // cmbRol
@@ -119,7 +121,7 @@
             // pctBoxVer
             // 
             pctBoxVer.Image = Properties.Resources.esconder;
-            pctBoxVer.Location = new Point(776, 130);
+            pctBoxVer.Location = new Point(776, 131);
             pctBoxVer.Name = "pctBoxVer";
             pctBoxVer.Size = new Size(27, 23);
             pctBoxVer.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -221,12 +223,24 @@
             label4.TabIndex = 16;
             label4.Text = "MODIFICAR USUARIO";
             // 
+            // pctbMod
+            // 
+            pctbMod.Image = Properties.Resources.esconder;
+            pctbMod.Location = new Point(785, 309);
+            pctbMod.Name = "pctbMod";
+            pctbMod.Size = new Size(27, 23);
+            pctbMod.SizeMode = PictureBoxSizeMode.StretchImage;
+            pctbMod.TabIndex = 17;
+            pctbMod.TabStop = false;
+            pctbMod.Click += pctbMod_Click;
+            // 
             // FormUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
             ClientSize = new Size(876, 478);
+            Controls.Add(pctbMod);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(lblMcontraseña);
@@ -250,6 +264,7 @@
             Load += FormUsuarios_Load;
             ((System.ComponentModel.ISupportInitialize)pctBoxVer).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pctbMod).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -273,5 +288,6 @@
         private Label lblMcontraseña;
         private Label label3;
         private Label label4;
+        private PictureBox pctbMod;
     }
 }

@@ -30,6 +30,14 @@
         {
             rbClienteComun = new RadioButton();
             gbClienteComun = new GroupBox();
+            txtTelefonoComun = new TextBox();
+            label20 = new Label();
+            cbCondicionComun = new ComboBox();
+            label16 = new Label();
+            txtCalleComun = new TextBox();
+            label8 = new Label();
+            label9 = new Label();
+            txtPuertaComun = new TextBox();
             txtContraseñaComun = new TextBox();
             txtUsuarioComun = new TextBox();
             label2 = new Label();
@@ -46,8 +54,16 @@
             txtPrimerNombre = new TextBox();
             btAceptarComun = new Button();
             gbClienteEmpresa = new GroupBox();
+            txtTelefonoEmpresa = new TextBox();
+            label21 = new Label();
+            cbCondicionEmpresa = new ComboBox();
+            label19 = new Label();
+            txtCalleEmpresa = new TextBox();
+            label10 = new Label();
             txtContraseñaEmpresa = new TextBox();
+            label15 = new Label();
             label6 = new Label();
+            txtPuertaEmpresa = new TextBox();
             txtUsuarioEmpresa = new TextBox();
             txtRut = new TextBox();
             label5 = new Label();
@@ -76,6 +92,14 @@
             // 
             // gbClienteComun
             // 
+            gbClienteComun.Controls.Add(txtTelefonoComun);
+            gbClienteComun.Controls.Add(label20);
+            gbClienteComun.Controls.Add(cbCondicionComun);
+            gbClienteComun.Controls.Add(label16);
+            gbClienteComun.Controls.Add(txtCalleComun);
+            gbClienteComun.Controls.Add(label8);
+            gbClienteComun.Controls.Add(label9);
+            gbClienteComun.Controls.Add(txtPuertaComun);
             gbClienteComun.Controls.Add(txtContraseñaComun);
             gbClienteComun.Controls.Add(txtUsuarioComun);
             gbClienteComun.Controls.Add(label2);
@@ -93,20 +117,93 @@
             gbClienteComun.Controls.Add(btAceptarComun);
             gbClienteComun.Location = new Point(235, 158);
             gbClienteComun.Name = "gbClienteComun";
-            gbClienteComun.Size = new Size(485, 168);
+            gbClienteComun.Size = new Size(485, 220);
             gbClienteComun.TabIndex = 4;
             gbClienteComun.TabStop = false;
             // 
+            // txtTelefonoComun
+            // 
+            txtTelefonoComun.Location = new Point(126, 164);
+            txtTelefonoComun.Name = "txtTelefonoComun";
+            txtTelefonoComun.Size = new Size(100, 23);
+            txtTelefonoComun.TabIndex = 53;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.BackColor = Color.Transparent;
+            label20.ForeColor = Color.White;
+            label20.Location = new Point(9, 164);
+            label20.Name = "label20";
+            label20.Size = new Size(52, 15);
+            label20.TabIndex = 52;
+            label20.Text = "Telefono";
+            // 
+            // cbCondicionComun
+            // 
+            cbCondicionComun.FormattingEnabled = true;
+            cbCondicionComun.Location = new Point(322, 98);
+            cbCondicionComun.Name = "cbCondicionComun";
+            cbCondicionComun.Size = new Size(100, 23);
+            cbCondicionComun.TabIndex = 10;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.BackColor = Color.Transparent;
+            label16.ForeColor = Color.White;
+            label16.Location = new Point(250, 101);
+            label16.Name = "label16";
+            label16.Size = new Size(62, 15);
+            label16.TabIndex = 51;
+            label16.Text = "Condicion";
+            // 
+            // txtCalleComun
+            // 
+            txtCalleComun.Location = new Point(322, 16);
+            txtCalleComun.Name = "txtCalleComun";
+            txtCalleComun.Size = new Size(100, 23);
+            txtCalleComun.TabIndex = 36;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(283, 19);
+            label8.Name = "label8";
+            label8.Size = new Size(33, 15);
+            label8.TabIndex = 35;
+            label8.Text = "Calle";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = Color.Transparent;
+            label9.ForeColor = Color.White;
+            label9.Location = new Point(275, 48);
+            label9.Name = "label9";
+            label9.Size = new Size(41, 15);
+            label9.TabIndex = 34;
+            label9.Text = "Puerta";
+            // 
+            // txtPuertaComun
+            // 
+            txtPuertaComun.Location = new Point(322, 45);
+            txtPuertaComun.Name = "txtPuertaComun";
+            txtPuertaComun.Size = new Size(100, 23);
+            txtPuertaComun.TabIndex = 33;
+            // 
             // txtContraseñaComun
             // 
-            txtContraseñaComun.Location = new Point(321, 46);
+            txtContraseñaComun.Location = new Point(322, 154);
             txtContraseñaComun.Name = "txtContraseñaComun";
             txtContraseñaComun.Size = new Size(100, 23);
             txtContraseñaComun.TabIndex = 32;
             // 
             // txtUsuarioComun
             // 
-            txtUsuarioComun.Location = new Point(321, 17);
+            txtUsuarioComun.Location = new Point(322, 125);
             txtUsuarioComun.Name = "txtUsuarioComun";
             txtUsuarioComun.Size = new Size(100, 23);
             txtUsuarioComun.TabIndex = 31;
@@ -116,18 +213,18 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(249, 48);
+            label2.Location = new Point(250, 156);
             label2.Name = "label2";
             label2.Size = new Size(67, 15);
             label2.TabIndex = 30;
-            label2.Text = "Contraseña_Login";
+            label2.Text = "Contraseña";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(249, 20);
+            label1.Location = new Point(250, 128);
             label1.Name = "label1";
             label1.Size = new Size(47, 15);
             label1.TabIndex = 29;
@@ -177,7 +274,7 @@
             label13.AutoSize = true;
             label13.BackColor = Color.Transparent;
             label13.ForeColor = Color.White;
-            label13.Location = new Point(6, 141);
+            label13.Location = new Point(8, 135);
             label13.Name = "label13";
             label13.Size = new Size(101, 15);
             label13.TabIndex = 23;
@@ -225,7 +322,7 @@
             // 
             // btAceptarComun
             // 
-            btAceptarComun.Location = new Point(404, 137);
+            btAceptarComun.Location = new Point(404, 183);
             btAceptarComun.Name = "btAceptarComun";
             btAceptarComun.Size = new Size(75, 23);
             btAceptarComun.TabIndex = 7;
@@ -235,8 +332,16 @@
             // 
             // gbClienteEmpresa
             // 
+            gbClienteEmpresa.Controls.Add(txtTelefonoEmpresa);
+            gbClienteEmpresa.Controls.Add(label21);
+            gbClienteEmpresa.Controls.Add(cbCondicionEmpresa);
+            gbClienteEmpresa.Controls.Add(label19);
+            gbClienteEmpresa.Controls.Add(txtCalleEmpresa);
+            gbClienteEmpresa.Controls.Add(label10);
             gbClienteEmpresa.Controls.Add(txtContraseñaEmpresa);
+            gbClienteEmpresa.Controls.Add(label15);
             gbClienteEmpresa.Controls.Add(label6);
+            gbClienteEmpresa.Controls.Add(txtPuertaEmpresa);
             gbClienteEmpresa.Controls.Add(txtUsuarioEmpresa);
             gbClienteEmpresa.Controls.Add(txtRut);
             gbClienteEmpresa.Controls.Add(label5);
@@ -244,29 +349,102 @@
             gbClienteEmpresa.Controls.Add(label18);
             gbClienteEmpresa.Controls.Add(txtNombreEmpresa);
             gbClienteEmpresa.Controls.Add(btAceptarEmpresa);
-            gbClienteEmpresa.Location = new Point(235, 161);
+            gbClienteEmpresa.Location = new Point(235, 395);
             gbClienteEmpresa.Name = "gbClienteEmpresa";
             gbClienteEmpresa.Size = new Size(485, 165);
             gbClienteEmpresa.TabIndex = 5;
             gbClienteEmpresa.TabStop = false;
             // 
+            // txtTelefonoEmpresa
+            // 
+            txtTelefonoEmpresa.Location = new Point(304, 108);
+            txtTelefonoEmpresa.Name = "txtTelefonoEmpresa";
+            txtTelefonoEmpresa.Size = new Size(100, 23);
+            txtTelefonoEmpresa.TabIndex = 54;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.BackColor = Color.Transparent;
+            label21.ForeColor = Color.White;
+            label21.Location = new Point(232, 114);
+            label21.Name = "label21";
+            label21.Size = new Size(52, 15);
+            label21.TabIndex = 53;
+            label21.Text = "Telefono";
+            // 
+            // cbCondicionEmpresa
+            // 
+            cbCondicionEmpresa.FormattingEnabled = true;
+            cbCondicionEmpresa.Location = new Point(304, 77);
+            cbCondicionEmpresa.Name = "cbCondicionEmpresa";
+            cbCondicionEmpresa.Size = new Size(100, 23);
+            cbCondicionEmpresa.TabIndex = 52;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.BackColor = Color.Transparent;
+            label19.ForeColor = Color.White;
+            label19.Location = new Point(232, 85);
+            label19.Name = "label19";
+            label19.Size = new Size(62, 15);
+            label19.TabIndex = 52;
+            label19.Text = "Condicion";
+            // 
+            // txtCalleEmpresa
+            // 
+            txtCalleEmpresa.Location = new Point(126, 82);
+            txtCalleEmpresa.Name = "txtCalleEmpresa";
+            txtCalleEmpresa.Size = new Size(100, 23);
+            txtCalleEmpresa.TabIndex = 40;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = Color.Transparent;
+            label10.ForeColor = Color.White;
+            label10.Location = new Point(8, 85);
+            label10.Name = "label10";
+            label10.Size = new Size(33, 15);
+            label10.TabIndex = 39;
+            label10.Text = "Calle";
+            // 
             // txtContraseñaEmpresa
             // 
-            txtContraseñaEmpresa.Location = new Point(304, 53);
+            txtContraseñaEmpresa.Location = new Point(304, 48);
             txtContraseñaEmpresa.Name = "txtContraseñaEmpresa";
             txtContraseñaEmpresa.Size = new Size(100, 23);
             txtContraseñaEmpresa.TabIndex = 50;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.BackColor = Color.Transparent;
+            label15.ForeColor = Color.White;
+            label15.Location = new Point(8, 111);
+            label15.Name = "label15";
+            label15.Size = new Size(41, 15);
+            label15.TabIndex = 38;
+            label15.Text = "Puerta";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.ForeColor = Color.White;
-            label6.Location = new Point(232, 56);
+            label6.Location = new Point(232, 51);
             label6.Name = "label6";
             label6.Size = new Size(67, 15);
             label6.TabIndex = 49;
-            label6.Text = "Contraseña_Login";
+            label6.Text = "Contraseña";
+            // 
+            // txtPuertaEmpresa
+            // 
+            txtPuertaEmpresa.Location = new Point(125, 111);
+            txtPuertaEmpresa.Name = "txtPuertaEmpresa";
+            txtPuertaEmpresa.Size = new Size(100, 23);
+            txtPuertaEmpresa.TabIndex = 37;
             // 
             // txtUsuarioEmpresa
             // 
@@ -277,7 +455,7 @@
             // 
             // txtRut
             // 
-            txtRut.Location = new Point(126, 53);
+            txtRut.Location = new Point(125, 48);
             txtRut.Name = "txtRut";
             txtRut.Size = new Size(100, 23);
             txtRut.TabIndex = 48;
@@ -397,8 +575,8 @@
         private Button btAceptarComun;
         private Label label3;
         private Label label4;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtPuertaEmpresa;
+        private TextBox txtCalleEmpresa;
         private ComboBox cbDepartamentos;
         private Label label11;
         private Label label7;
@@ -425,5 +603,19 @@
         private Label label6;
         private TextBox txtUsuarioEmpresa;
         private Label label5;
+        private TextBox txtCalleComun;
+        private Label label8;
+        private Label label9;
+        private TextBox txtPuertaComun;
+        private Label label16;
+        private Label label19;
+        private Label label10;
+        private Label label15;
+        private ComboBox cbCondicionComun;
+        private ComboBox cbCondicionEmpresa;
+        private TextBox txtTelefonoComun;
+        private Label label20;
+        private TextBox txtTelefonoEmpresa;
+        private Label label21;
     }
 }

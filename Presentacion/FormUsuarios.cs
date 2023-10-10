@@ -27,14 +27,7 @@ namespace proyecto.Presentacion
             ConfigurarEventos();
             gestionarUsuarios = new GestionarUsuarios();
             txtContraseñaLogin.PasswordChar = '*';
-            try
-            {
-                ActualizarDgvUsuarios();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al inicializar gestorUsuarios: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            txtMcontraseñaLogin.PasswordChar = '*';
         }
 
         private void ConfigurarEventos()
@@ -58,6 +51,18 @@ namespace proyecto.Presentacion
                 else
                 {
                     txtContraseñaLogin.PasswordChar = '*'; // Ocultar la contraseña (con asteriscos)
+                }
+            };
+            // Manejar la visibilidad de la contraseña al hacer clic en el PictureBox
+            pctbMod.Click += (sender, e) =>
+            {
+                if (txtMcontraseñaLogin.PasswordChar == '*')
+                {
+                    txtMcontraseñaLogin.PasswordChar = '\0'; // Mostrar la contraseña (sin asteriscos)
+                }
+                else
+                {
+                    txtMcontraseñaLogin.PasswordChar = '*'; // Ocultar la contraseña (con asteriscos)
                 }
             };
 
@@ -281,6 +286,21 @@ namespace proyecto.Presentacion
                 lblMcontraseña.Visible = false;
                 lblMUsuario.Visible = false;
             }
+        }
+
+        private void pctbMod_Click(object sender, EventArgs e)
+        {
+            if (isLabelGreen)
+            {
+                lblMcontraseña.ForeColor = Color.Red; // Cambia a rojo
+            }
+            else
+            {
+                lblMcontraseña.ForeColor = Color.GreenYellow; // Cambia a verde
+            }
+
+            // Cambia el estado para la próxima vez
+            isLabelGreen = !isLabelGreen;
         }
     }
 }
