@@ -72,7 +72,6 @@ namespace Proyecto.Persistencia
             }
         }
 
-
         public DataTable ObtenerUsuarios()
         {
             try

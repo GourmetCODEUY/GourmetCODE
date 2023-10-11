@@ -29,6 +29,9 @@ namespace proyecto.Persistencia
         public string Telefono_Empresa { get; set; }
         public string Calle_Empresa { get; set; }
         public string Puerta_Empresa { get; set; }
+        public string Zona_Empresa { get; set; }
+        public string Autorizacion { get; set; }
+        public string Condicion_Clinica{ get; set; }
     }
 
     public class ClienteRepository
@@ -68,30 +71,57 @@ namespace proyecto.Persistencia
                 using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
                 {
                     conexion.Open();
-                    string consultaEmpresa = "INSERT INTO cliente_empresa (Rut, Nombre_Empresa, Usuario_Login, Contraseña_Login) " +
-                                      "VALUES (@Rut, @NomEmpresa, @UsuarioEmpresa, @ContraseñaEmpresa)";
-                    MySqlCommand cmd = new MySqlCommand(consultaEmpresa, conexion);
-                    cmd.Parameters.AddWithValue("@Rut", clienteEmpresa.Rut);
-                    cmd.Parameters.AddWithValue("@NomEmpresa", clienteEmpresa.Nom_Empresa);
-                    cmd.Parameters.AddWithValue("@UsuarioEmpresa", clienteEmpresa.UsuarioEmpresa);
-                    cmd.Parameters.AddWithValue("@ContraseñaEmpresa", clienteEmpresa.ContraseñaEmpresa);
-                    cmd.ExecuteNonQuery();
-
-                    string consultaCliente = "INSERT INTO cliente (Calle_Cliente, Puerta_Cliente, Condicion_Clinica) " + "VALUES (@Calle_Empresa, @Puerta_Empresa)";
-                    MySqlCommand cmdEmpresa = new MySqlCommand(consultaCliente, conexion);
-                    cmdEmpresa.Parameters.AddWithValue("@Calle_Empresa", clienteEmpresa.Calle_Empresa);
-                    cmdEmpresa.Parameters.AddWithValue("@Puerta_Empresa", clienteEmpresa.Puerta_Empresa);
-                    cmdEmpresa.ExecuteNonQuery();
-
-                    string consultaTelefono = "INSERT INTO cliente_telefono (Telefono)" + "VALUES (@Telefono_Empresa)";
-                    MySqlCommand cmdTelefono = new MySqlCommand(consultaTelefono, conexion);
-                    cmdTelefono.Parameters.AddWithValue("@Telefono_Empresa", clienteEmpresa.Telefono_Empresa);
-                    cmdTelefono.ExecuteNonQuery();
+                    try
+                    {
+                        string consultaCliente = "INSERT INTO cliente (Num_Cliente, Calle_Cliente, Puerta_Cliente, Zona_cliente, Autorizacion, Condicion_Clinica, Telefono) " + "VALUES (@Num_Cliente, @Calle_Cliente, @Puerta_Cliente, @Zona_cliente, @Autorizacion, @Condicion_Clinica, @Telefono)";
+                        MySqlCommand cmdEmpresa = new MySqlCommand(consultaCliente, conexion);
+                        cmdEmpresa.Parameters.AddWithValue("@Num_Cliente", "NULL");
+                        cmdEmpresa.Parameters.AddWithValue("@Calle_Cliente", clienteEmpresa.Calle_Empresa);
+                        cmdEmpresa.Parameters.AddWithValue("@Puerta_Cliente", clienteEmpresa.Puerta_Empresa);
+                        cmdEmpresa.Parameters.AddWithValue("@Zona_Cliente", "0");
+                        cmdEmpresa.Parameters.AddWithValue("@Autorizacion", "0");
+                        cmdEmpresa.Parameters.AddWithValue("@Condicion_Clinica", "0");
+                        cmdEmpresa.Parameters.AddWithValue("@Telefono", clienteEmpresa.Telefono_Empresa);
+                        cmdEmpresa.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Error INSERT Tabla CLIENTE" + ex.Message, ex);
+                    }
+                   
+                    try 
+                    {
+                        string consultaEmpresa = "INSERT INTO cliente_empresa (Num_Cliente, Rut, Nombre_Empresa, Usuario_Login, Contraseña_Login) " +
+                                     "VALUES (@Num_Cliente, @Rut, @NomEmpresa, @UsuarioEmpresa, @ContraseñaEmpresa)";
+                        MySqlCommand cmd = new MySqlCommand(consultaEmpresa, conexion);
+                        cmd.Parameters.AddWithValue("@Num_Cliente", "NULL");
+                        cmd.Parameters.AddWithValue("@Rut", clienteEmpresa.Rut);
+                        cmd.Parameters.AddWithValue("@NomEmpresa", clienteEmpresa.Nom_Empresa);
+                        cmd.Parameters.AddWithValue("@UsuarioEmpresa", clienteEmpresa.UsuarioEmpresa);
+                        cmd.Parameters.AddWithValue("@ContraseñaEmpresa", clienteEmpresa.ContraseñaEmpresa);
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Error al insertar el cliente de empresa en la base de datos." + ex.Message, ex);
+                    }
+                   
+                    try
+                    {
+                        string consultaTelefono = "INSERT INTO cliente_telefono (Telefono)" + "VALUES (@Telefono_Empresa)";
+                        MySqlCommand cmdTelefono = new MySqlCommand(consultaTelefono, conexion);
+                        cmdTelefono.Parameters.AddWithValue("@Telefono_Empresa", clienteEmpresa.Telefono_Empresa);
+                        cmdTelefono.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Error INSERT Cliente Telefono" + ex.Message, ex);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al insertar el cliente de empresa en la base de datos." + ex.Message, ex);
+                throw new Exception("Error al insertar en la base de datos." + ex.Message, ex);
             }
         }
     }
