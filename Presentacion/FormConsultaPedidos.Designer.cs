@@ -29,25 +29,37 @@
         private void InitializeComponent()
         {
             dgvPedidos = new DataGridView();
+            btnConsultarPedido = new Button();
             ID_Pedido = new DataGridViewTextBoxColumn();
             Desc_Pedido = new DataGridViewTextBoxColumn();
             Calle_Cliente = new DataGridViewTextBoxColumn();
             Puerta_Cliente = new DataGridViewTextBoxColumn();
             Zona_Cliente = new DataGridViewTextBoxColumn();
             Barrio_Cliente = new DataGridViewTextBoxColumn();
-            btnConsultarPedido = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
             SuspendLayout();
             // 
             // dgvPedidos
             // 
+            dgvPedidos.BackgroundColor = Color.FromArgb(66, 125, 125);
             dgvPedidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPedidos.Columns.AddRange(new DataGridViewColumn[] { ID_Pedido, Desc_Pedido, Calle_Cliente, Puerta_Cliente, Zona_Cliente, Barrio_Cliente });
-            dgvPedidos.Location = new Point(140, 12);
+            dgvPedidos.Location = new Point(127, 12);
             dgvPedidos.Name = "dgvPedidos";
             dgvPedidos.RowTemplate.Height = 25;
-            dgvPedidos.Size = new Size(642, 296);
+            dgvPedidos.Size = new Size(643, 296);
             dgvPedidos.TabIndex = 0;
+            // 
+            // btnConsultarPedido
+            // 
+            btnConsultarPedido.BackColor = Color.SkyBlue;
+            btnConsultarPedido.Location = new Point(418, 314);
+            btnConsultarPedido.Name = "btnConsultarPedido";
+            btnConsultarPedido.Size = new Size(75, 23);
+            btnConsultarPedido.TabIndex = 1;
+            btnConsultarPedido.Text = "Pedido";
+            btnConsultarPedido.UseVisualStyleBackColor = false;
+            btnConsultarPedido.Click += btnConsultarPedido_Click;
             // 
             // ID_Pedido
             // 
@@ -76,24 +88,14 @@
             // 
             // Barrio_Cliente
             // 
-            Barrio_Cliente.HeaderText = "Barrio del cliente";
+            Barrio_Cliente.HeaderText = "Barrio del Cliente";
             Barrio_Cliente.Name = "Barrio_Cliente";
-            // 
-            // btnConsultarPedido
-            // 
-            btnConsultarPedido.Location = new Point(418, 314);
-            btnConsultarPedido.Name = "btnConsultarPedido";
-            btnConsultarPedido.Size = new Size(75, 23);
-            btnConsultarPedido.TabIndex = 1;
-            btnConsultarPedido.Text = "Pedido";
-            btnConsultarPedido.UseVisualStyleBackColor = true;
-            btnConsultarPedido.Click += btnConsultarPedido_Click;
             // 
             // FormConsultaPedidos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DimGray;
+            BackColor = Color.FromArgb(66, 125, 125);
             ClientSize = new Size(908, 556);
             Controls.Add(btnConsultarPedido);
             Controls.Add(dgvPedidos);

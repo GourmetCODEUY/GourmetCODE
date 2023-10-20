@@ -28,25 +28,32 @@ namespace Proyecto.Persistencia
                 using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
                 {
                     conexion.Open();
-                    string consulta = "SELECT ID_Pedido, Desc_Pedido, Calle_Cliente, Puerta_Cliente, Zona_Cliente, Barrio_Cliente " +
-                                      "FROM pedido " +
-                                      "LIMIT 0, 25";
-                    MySqlCommand cmd = new MySqlCommand(consulta, conexion);
-                    MySqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
+                    try
                     {
-                        Pedido pedido = new Pedido
+                        string consulta = "SELECT pedido.ID_Pedido, pedido.Desc_Pedido, cliente.Calle_Cliente, cliente.Puerta_Cliente, cliente.Zona_cliente, cliente.Barrio_Cliente, realiza.Fecha_Pedido, contiene_pedido.ID_Comida\r\nFROM pedido\r\nINNER JOIN realiza ON pedido.ID_Pedido = realiza.ID_Pedido\r\nINNER JOIN contiene_pedido ON pedido.ID_Pedido = contiene_pedido.ID_Pedido\r\nINNER JOIN cliente ON realiza.Num_Cliente = cliente.Num_Cliente\r\nLIMIT 0, 25;\r\n";
+                        MySqlCommand cmd = new MySqlCommand(consulta, conexion);
+                        MySqlDataReader reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
                         {
-                            ID_Pedido = Convert.ToInt32(reader["ID_Pedido"]),
-                            Desc_Pedido = reader["Desc_Pedido"].ToString(),
-                            Calle_Cliente = reader["Calle_Cliente"].ToString(),
-                            Puerta_Cliente = reader["Puerta_Cliente"].ToString(),
-                            Zona_Cliente = reader["Zona_Cliente"].ToString(),
-                            Barrio_Cliente = reader["Barrio_Cliente"].ToString()
-                        };
-                        pedidoList.Add(pedido);
+                            Pedido pedido = new Pedido
+                            {
+                                ID_Pedido = Convert.ToInt32(reader["ID_Pedido"]),
+                                Desc_Pedido = reader["Desc_Pedido"].ToString(),
+                                Calle_Cliente = reader["Calle_Cliente"].ToString(),
+                                Puerta_Cliente = reader["Puerta_Cliente"].ToString(),
+                                Zona_Cliente = reader["Zona_cliente"].ToString(),
+                            };
+                            pedidoList.Add(pedido);
+                        }
                     }
+                    catch (MySqlException mySqlEx)
+                    {
+                        // Agregar detalles específicos del error de MySQL
+                        string mensajeError = "Error al guardar el pedido en la base de datos. Detalles: " + mySqlEx.Message;
+                        throw new Exception(mensajeError, mySqlEx);
+                    }
+
                 }
             }
             catch (Exception ex)

@@ -291,6 +291,7 @@
             // 
             // panelFormularios
             // 
+            panelFormularios.BackColor = Color.FromArgb(66, 125, 125);
             panelFormularios.Location = new Point(229, 0);
             panelFormularios.Name = "panelFormularios";
             panelFormularios.Size = new Size(924, 595);

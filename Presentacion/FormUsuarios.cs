@@ -122,7 +122,7 @@ namespace proyecto.Presentacion
                 new { Id = 3, Nombre = "Administracion" },
                 new { Id = 4, Nombre = "Cocina" },
                 new { Id = 5, Nombre = "Transporte" },
-                new { Id = 6, Nombre = "Publico" }
+                new { Id = 6, Nombre = "Publico" },
             };
 
             cmbRol.DataSource = roles;
@@ -144,7 +144,7 @@ namespace proyecto.Presentacion
         {
             if (dgvUsuarios.SelectedRows.Count > 0)
             {
-                string usuarioLogin = dgvUsuarios.SelectedRows[0].Cells[0].Value.ToString();
+                string usuarioLogin = dgvUsuarios.SelectedRows[0].Cells[0].Value.ToString() ?? string.Empty;
 
                 try
                 {
@@ -216,7 +216,7 @@ namespace proyecto.Presentacion
                 // Verifica si la fila seleccionada contiene datos válidos antes de continuar
                 if (selectedRow.Cells[0].Value != null && selectedRow.Cells[1].Value != null)
                 {
-                    string usuarioLogin = selectedRow.Cells["Usuario_Login"].Value.ToString();
+                    string usuarioLogin = selectedRow.Cells["Usuario_Login"].Value.ToString() ?? string.Empty;
 
                     // Asegúrate de que el valor seleccionado del ComboBox sea una cadena válida
                     if (cmbRol.SelectedValue != null && int.TryParse(cmbRol.SelectedValue.ToString(), out int nuevoRol))

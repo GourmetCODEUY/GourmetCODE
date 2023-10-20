@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Transactions;
 
 namespace proyecto.Persistencia
@@ -26,41 +23,53 @@ namespace proyecto.Persistencia
                         try
                         {
                             // Insertar en la tabla "pedido" y obtener el ID_Pedido recién insertado
-                            string consultaPedido = "INSERT INTO pedido (Desc_Pedido, Calle_Cliente, Puerta_Cliente, Zona_Cliente, Barrio_Cliente) " +
-                                                    "VALUES (@DescPedido, @CalleCliente, @PuertaCliente, @ZonaCliente, @BarrioCliente); " +
-                                                    "SELECT LAST_INSERT_ID();";
+                            string consultaPedido = "INSERT INTO pedido (Desc_Pedido) " +
+                                "VALUES (@DescPedido);";
                             MySqlCommand cmdPedido = new MySqlCommand(consultaPedido, conexion, transaction);
                             cmdPedido.Parameters.AddWithValue("@DescPedido", descPedido);
-                            cmdPedido.Parameters.AddWithValue("@CalleCliente", calleCliente);
-                            cmdPedido.Parameters.AddWithValue("@PuertaCliente", puertaCliente);
-                            cmdPedido.Parameters.AddWithValue("@ZonaCliente", zonaCliente);
-                            cmdPedido.Parameters.AddWithValue("@BarrioCliente", barrioCliente);
-                            long idPedido = Convert.ToInt64(cmdPedido.ExecuteScalar());
+                            cmdPedido.ExecuteNonQuery();
 
-                            // Insertar en la tabla "estado_pedido" con estado "Solicitado" y el ID_Pedido obtenido
-                            string consultaEstadoPedido = "INSERT INTO estado_pedido (ID_Pedido, Estado_Pedido) " +
-                                                          "VALUES (@ID_Pedido, 'Solicitado')";
-                            MySqlCommand cmdEstadoPedido = new MySqlCommand(consultaEstadoPedido, conexion, transaction);
-                            cmdEstadoPedido.Parameters.AddWithValue("@ID_Pedido", idPedido);
-                            cmdEstadoPedido.ExecuteNonQuery();
+                            // Obtener el ID_Pedido recién insertado
+                            string obtenerIdPedido = "SELECT LAST_INSERT_ID();";
+                            MySqlCommand cmdObtenerIdPedido = new MySqlCommand(obtenerIdPedido, conexion, transaction);
+                            long idPedido = Convert.ToInt64(cmdObtenerIdPedido.ExecuteScalar());
+
+                            // Insertar en la tabla "cliente" para guardar los datos del cliente
+                            string consultaCliente = "INSERT INTO cliente (Calle_Cliente, Puerta_Cliente, Zona_Cliente, Barrio_Cliente) " +
+                                "VALUES (@CalleCliente, @PuertaCliente, @ZonaCliente, @BarrioCliente)";
+                            MySqlCommand cmdCliente = new MySqlCommand(consultaCliente, conexion, transaction);
+                            cmdCliente.Parameters.AddWithValue("@CalleCliente", calleCliente);
+                            cmdCliente.Parameters.AddWithValue("@PuertaCliente", puertaCliente);
+                            cmdCliente.Parameters.AddWithValue("@ZonaCliente", zonaCliente);
+                            cmdCliente.Parameters.AddWithValue("@BarrioCliente", barrioCliente);
+                            cmdCliente.ExecuteNonQuery();
+
+                            // Insertar en la tabla "realiza" para relacionar el pedido con el cliente
+                            string consultaRealiza = "INSERT INTO realiza (Fecha_Pedido, ID_Pedido, Num_Cliente) " +
+                                "VALUES (NOW(), @ID_Pedido, LAST_INSERT_ID())";
+                            MySqlCommand cmdRealiza = new MySqlCommand(consultaRealiza, conexion, transaction);
+                            cmdRealiza.Parameters.AddWithValue("@ID_Pedido", idPedido);
+                            cmdRealiza.ExecuteNonQuery();
 
                             // Confirmar la transacción
                             transaction.Commit();
 
                             return true;
                         }
-                        catch (Exception ex)
+                        catch (MySqlException mySqlEx)
                         {
-                            // En caso de error, hacer un rollback de la transacción para deshacer cualquier cambio
-                            transaction.Rollback();
-                            throw new Exception("Error al guardar el pedido en la base de datos.", ex);
+                            // Agregar detalles específicos del error de MySQL
+                            string mensajeError = "Error al guardar el pedido en la base de datos. Detalles: " + mySqlEx.Message;
+                            throw new Exception(mensajeError, mySqlEx);
                         }
                     }
                 }
             }
-            catch (Exception ex)
+            catch (MySqlException mySqlEx)
             {
-                throw new Exception("Error al guardar el pedido en la base de datos.", ex);
+                // Agregar detalles específicos del error de MySQL
+                string mensajeError = "Error al guardar el pedido en la base de datos. Detalles: " + mySqlEx.Message;
+                throw new Exception(mensajeError, mySqlEx);
             }
         }
     }

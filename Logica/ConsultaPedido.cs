@@ -1,4 +1,5 @@
-﻿using Proyecto.Persistencia;
+﻿using MySql.Data.MySqlClient;
+using Proyecto.Persistencia;
 using System;
 using System.Collections.Generic;
 
@@ -19,9 +20,11 @@ namespace Proyecto.Logica
             {
                 return consultarPedido.ObtenerPedidos();
             }
-            catch (Exception ex)
+            catch (MySqlException mySqlEx)
             {
-                throw new Exception("Error al consultar los pedidos.", ex);
+                // Agregar detalles específicos del error de MySQL
+                string mensajeError = "Error al guardar el pedido en la base de datos. Detalles: " + mySqlEx.Message;
+                throw new Exception(mensajeError, mySqlEx);
             }
         }
     }

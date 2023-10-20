@@ -110,12 +110,14 @@
             // 
             // btnGuardarUsuario
             // 
+            btnGuardarUsuario.BackColor = Color.SkyBlue;
+            btnGuardarUsuario.FlatStyle = FlatStyle.Flat;
             btnGuardarUsuario.Location = new Point(519, 131);
             btnGuardarUsuario.Name = "btnGuardarUsuario";
             btnGuardarUsuario.Size = new Size(97, 23);
             btnGuardarUsuario.TabIndex = 6;
             btnGuardarUsuario.Text = "Guardar Alta ";
-            btnGuardarUsuario.UseVisualStyleBackColor = true;
+            btnGuardarUsuario.UseVisualStyleBackColor = false;
             btnGuardarUsuario.Click += btnGuardarUsuario_Click;
             // 
             // pctBoxVer
@@ -131,6 +133,7 @@
             // 
             // dgvUsuarios
             // 
+            dgvUsuarios.BackgroundColor = Color.FromArgb(66, 125, 125);
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsuarios.Location = new Point(40, 20);
             dgvUsuarios.MultiSelect = false;
@@ -145,22 +148,24 @@
             // 
             // btnEliminarUsuario
             // 
+            btnEliminarUsuario.BackColor = Color.SkyBlue;
             btnEliminarUsuario.Location = new Point(66, 443);
             btnEliminarUsuario.Name = "btnEliminarUsuario";
             btnEliminarUsuario.Size = new Size(188, 23);
             btnEliminarUsuario.TabIndex = 9;
             btnEliminarUsuario.Text = "Eliminar Usuario Seleccionado";
-            btnEliminarUsuario.UseVisualStyleBackColor = true;
+            btnEliminarUsuario.UseVisualStyleBackColor = false;
             btnEliminarUsuario.Click += btnEliminarUsuario_Click;
             // 
             // btnModificarUsuario
             // 
+            btnModificarUsuario.BackColor = Color.SkyBlue;
             btnModificarUsuario.Location = new Point(559, 347);
             btnModificarUsuario.Name = "btnModificarUsuario";
             btnModificarUsuario.Size = new Size(141, 23);
             btnModificarUsuario.TabIndex = 10;
             btnModificarUsuario.Text = "Guardar Modificacion";
-            btnModificarUsuario.UseVisualStyleBackColor = true;
+            btnModificarUsuario.UseVisualStyleBackColor = false;
             btnModificarUsuario.Click += btnModificarUsuario_Click;
             // 
             // txtMUsuarioLogin
@@ -238,7 +243,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DimGray;
+            BackColor = Color.FromArgb(66, 125, 125);
             ClientSize = new Size(876, 478);
             Controls.Add(pctbMod);
             Controls.Add(label4);

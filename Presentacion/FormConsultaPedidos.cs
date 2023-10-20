@@ -28,7 +28,7 @@ namespace proyecto.Presentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al consultar los pedidos: " + ex.Message);
+                MessageBox.Show("Error al consultar los pedidos: " + ex.Message + ex);
             }
         }
 

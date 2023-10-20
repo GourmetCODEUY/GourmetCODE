@@ -72,7 +72,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.BackColor = Color.Teal;
+            btnLogin.BackColor = Color.SkyBlue;
             resources.ApplyResources(btnLogin, "btnLogin");
             btnLogin.ForeColor = SystemColors.ActiveCaptionText;
             btnLogin.Name = "btnLogin";
@@ -117,7 +117,7 @@
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(0, 64, 64);
+            BackColor = Color.FromArgb(66, 125, 125);
             Controls.Add(lblRegistro);
             Controls.Add(panel1);
             Controls.Add(label3);

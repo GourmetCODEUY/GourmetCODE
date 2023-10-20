@@ -9,6 +9,9 @@ namespace proyecto.Presentacion
         {
             InitializeComponent();
             manager = new NuevoPedidoManager();
+
+            // Asocia el evento cmbDepartamentos_SelectedIndexChanged al ComboBox de departamentos
+            cmbDepartamentos.SelectedIndexChanged += cmbDepartamentos_SelectedIndexChanged;
         }
         private void FormNuevoPedido_Load(object sender, EventArgs e)
         {
@@ -17,8 +20,32 @@ namespace proyecto.Presentacion
 
             //Cargar zonas en el comboBox
             CargarZonas();
-        }
 
+            List<string> departamentos = new List<string>
+            {
+                "Artigas",
+                "Canelones",
+                "Cerro Largo",
+                "Colonia",
+                "Durazno",
+                "Flores",
+                "Florida",
+                "Lavalleja",
+                "Maldonado",
+                "Montevideo",
+                "Paysandú",
+                "Río Negro",
+                "Rivera",
+                "Rocha",
+                "Salto",
+                "San José",
+                "Soriano",
+                "Tacuarembó",
+                "Treinta y Tres"
+            };
+
+            cmbDepartamentos.DataSource = departamentos;
+        }
         private void CargarZonas()
         {
             try
@@ -37,31 +64,23 @@ namespace proyecto.Presentacion
             cmbBarrios.Enabled = true;
             lblBarrio.Enabled = true;
 
-            string zonaSeleccionada = cmbZonas.SelectedItem.ToString();
-            cmbBarrios.Items.Clear();
-
-            // Cargar los barrios al ComboBox según la zona seleccionada
-            CargarBarrios(zonaSeleccionada);
-        }
-        private void CargarBarrios(string zonaSeleccionada)
-        {
-            try
+            if (cmbZonas.SelectedItem != null)
             {
-                List<string> barrios = manager.ObtenerBarrios(zonaSeleccionada);
+                string zonaSeleccionada = cmbZonas.SelectedItem?.ToString() ?? string.Empty;
 
-                cmbBarrios.Items.Clear();
-                cmbBarrios.Items.AddRange(barrios.ToArray());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar los barrios: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (zonaSeleccionada != null)
+                {
+                    cmbBarrios.Items.Clear();
+
+                    // Cargar los barrios al ComboBox según la zona seleccionada
+                }
             }
         }
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            string zonaSeleccionada = cmbZonas.SelectedItem.ToString();
-            string barrioSeleccionado = cmbBarrios.SelectedItem.ToString();
+            string zonaSeleccionada = cmbZonas.SelectedItem.ToString() ?? string.Empty;
+            string barrioSeleccionado = cmbBarrios.SelectedItem.ToString() ?? string.Empty;
             string descPedido = txtDescPedido.Text;
             string calleCliente = txtCalleCliente.Text;
             string puertaCliente = txtPuerta.Text;
@@ -100,5 +119,47 @@ namespace proyecto.Presentacion
                 e.Handled = true;
             }
         }
+
+        private void cmbDepartamentos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Obtiene el departamento seleccionado
+            string departamentoSeleccionado = cmbDepartamentos.SelectedItem?.ToString();
+
+            if (departamentoSeleccionado != null)
+            {
+                // Llama a la función para cargar las zonas según el departamento
+                CargarZonasPorDepartamento(departamentoSeleccionado);
+            }
+        }
+
+        private void CargarZonasPorDepartamento(string departamentoSeleccionado)
+        {
+            // Crea una estructura de datos que mapea departamentos a zonas
+            var zonasPorDepartamento = new Dictionary<string, List<string>>
+    {
+        { "Montevideo", new List<string> { "Zona 1", "Zona 2", "Zona 3" } },
+        { "Canelones", new List<string> { "Zona A", "Zona B", "Zona C" } },
+        // Agrega otros departamentos y sus respectivas zonas
+    };
+
+            // Verifica si el departamento seleccionado está en el diccionario
+            if (zonasPorDepartamento.ContainsKey(departamentoSeleccionado))
+            {
+                // Obtiene la lista de zonas correspondientes al departamento
+                var zonas = zonasPorDepartamento[departamentoSeleccionado];
+
+                // Limpia el ComboBox cmbZonas
+                cmbZonas.Items.Clear();
+
+                // Agrega las zonas al ComboBox cmbZonas
+                cmbZonas.Items.AddRange(zonas.ToArray());
+            }
+            else
+            {
+                // Maneja el caso en el que no se encuentra el departamento
+                MessageBox.Show("Departamento no encontrado en el diccionario de zonas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

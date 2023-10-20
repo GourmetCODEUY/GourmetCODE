@@ -46,7 +46,7 @@ namespace proyecto.Logica
                 ClienteEmpresa nuevoClienteEmpresa = new ClienteEmpresa
                 {                   
                     Rut = rut,
-                    Nom_Empresa = nomEmpresa,
+                    Nombre_Empresa = nomEmpresa,
                     UsuarioEmpresa = usuarioLoginEmpresa,
                     ContraseñaEmpresa = contraseñaLoginEmpresa,
                     Telefono_Empresa = telefonoEmpresa,

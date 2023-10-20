@@ -39,7 +39,7 @@
             btnConsultaZonas.Font = new Font("Sitka Banner", 15.7499981F, FontStyle.Regular, GraphicsUnit.Point);
             btnConsultaZonas.ForeColor = Color.White;
             btnConsultaZonas.ImageAlign = ContentAlignment.MiddleRight;
-            btnConsultaZonas.Location = new Point(663, 12);
+            btnConsultaZonas.Location = new Point(338, 238);
             btnConsultaZonas.Name = "btnConsultaZonas";
             btnConsultaZonas.Size = new Size(233, 51);
             btnConsultaZonas.TabIndex = 7;
