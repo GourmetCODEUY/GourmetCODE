@@ -52,14 +52,6 @@ namespace proyecto.Presentacion
                     consultaProducto.ActualizarEstadoProducto(numMenu, nuevoValor);
                 }
 
-                MessageBox.Show("Cambios guardados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Limpia y actualiza el DataGridView dgvConsultaProducto
-                dgvConsultaProducto.DataSource = null;
-                dgvConsultaProducto.Rows.Clear();
-                dgvConsultaProducto.Columns.Clear();
-                btnConsultaProducto.PerformClick(); // Simula un clic en el botón "Consultar" de dgvConsultaProducto
-
                 // Itera a través de las filas del DataGridView para obtener los cambios en "Habilitado"
                 foreach (DataGridViewRow row in dgvConsultaProductoDeshabilitado.Rows)
                 {
@@ -70,10 +62,17 @@ namespace proyecto.Presentacion
                     consultaProducto.ActualizarEstadoProducto(numMenu, nuevoValor);
                 }
 
-                // Limpia y actualiza el DataGridView dgvConsultaProductoDeshabilitado
+                MessageBox.Show("Cambios guardados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpia y actualiza ambos DataGridViews
+                dgvConsultaProducto.DataSource = null;
+                dgvConsultaProducto.Rows.Clear();
+                dgvConsultaProducto.Columns.Clear();
                 dgvConsultaProductoDeshabilitado.DataSource = null;
                 dgvConsultaProductoDeshabilitado.Rows.Clear();
                 dgvConsultaProductoDeshabilitado.Columns.Clear();
+
+                btnConsultaProducto.PerformClick(); // Simula un clic en el botón "Consultar" de dgvConsultaProducto
                 btnConsultarProductoDeshabilitado.PerformClick(); // Simula un clic en el botón "Consultar" de dgvConsultaProductoDeshabilitado
             }
             catch (Exception ex)
@@ -81,6 +80,7 @@ namespace proyecto.Presentacion
                 MessageBox.Show("Error al guardar los cambios: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void ActualizarDataGridView()
         {
             try

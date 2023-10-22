@@ -30,14 +30,14 @@
         {
             SuspendLayout();
             // 
-            // FormCunsultaCliente
+            // FormConsultaCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(924, 595);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FormCunsultaCliente";
+            Name = "FormConsultaCliente";
             Text = "FormCunsultaCliente";
             ResumeLayout(false);
         }

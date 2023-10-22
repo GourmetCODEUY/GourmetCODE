@@ -44,6 +44,8 @@ namespace proyecto.Persistencia
         public string Zona_Empresa { get; set; }
         public string Autorizacion { get; set; }
         public string Condicion_Clinica{ get; set; }
+        public string Zona { get; set; } // Agregar la propiedad Zona
+        public string Departamento { get; set; }
     }
 
     public class ClienteRepository
@@ -102,6 +104,23 @@ namespace proyecto.Persistencia
                         }
                     }
 
+                    using (MySqlCommand cmdUsuarioRol = conexion.CreateCommand())
+                    {
+                        try
+                        {
+                            string consultaUsuarioRol = "INSERT INTO rol (Rol, Usuario_Login) " +
+                                "VALUES (@Rol, @Usuario_Login)";
+                            cmdUsuarioRol.CommandText = consultaUsuarioRol;
+                            cmdUsuarioRol.Parameters.AddWithValue("@Usuario_Login", clienteEmpresa.UsuarioEmpresa);
+                            cmdUsuarioRol.Parameters.AddWithValue("@Rol", "8"); // "8" ES EL ID DE ROL DE CLIENTE EMPRESA
+                            cmdUsuarioRol.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception("Error al insertar en la tabla rol: " + ex.Message, ex);
+                        }
+                    }
+
                     // Insertar en la tabla cliente
                     using (MySqlCommand cmdCliente = conexion.CreateCommand())
                     {
@@ -131,18 +150,39 @@ namespace proyecto.Persistencia
                         ultimoIDCliente = (ulong)cmdUltimoIDCliente.ExecuteScalar();
                     }
 
+                    using (MySqlCommand cmdEmpresaReside = conexion.CreateCommand())
+                    {
+                        try
+                        {
+                            string consultaEmpresa = "INSERT INTO reside (Num_Cliente, ID_Sucursal, ID_Departamento, Num_Zona) " +
+                                "VALUES (@Num_Cliente, @ID_Sucursal, @ID_Departamento, @Num_Zona)";
+                            cmdEmpresaReside.CommandText = consultaEmpresa;
+                            cmdEmpresaReside.Parameters.AddWithValue("@Num_Cliente", Convert.ToInt64(ultimoIDCliente)); // Convertir a Int64
+                            cmdEmpresaReside.Parameters.AddWithValue("@Rut", clienteEmpresa.Rut);
+                            cmdEmpresaReside.Parameters.AddWithValue("@Nombre_Empresa", clienteEmpresa.Nombre_Empresa);
+                            cmdEmpresaReside.Parameters.AddWithValue("@Usuario_Login", clienteEmpresa.UsuarioEmpresa);
+                            cmdEmpresaReside.Parameters.AddWithValue("@Contraseña_Login", clienteEmpresa.ContraseñaEmpresa);
+                            cmdEmpresaReside.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception("Error al insertar en la tabla cliente_empresa: " + ex.Message, ex);
+                        }
+                    }
+
                     // Insertar en la tabla cliente_empresa
                     using (MySqlCommand cmdEmpresa = conexion.CreateCommand())
                     {
                         try
                         {
-                            string consultaEmpresa = "INSERT INTO cliente_empresa (Num_Cliente, Rut, Nombre_Empresa, Usuario_Login) " +
-                                "VALUES (@Num_Cliente, @Rut, @Nombre_Empresa, @Usuario_Login)";
+                            string consultaEmpresa = "INSERT INTO cliente_empresa (Num_Cliente, Rut, Nombre_Empresa, Usuario_Login, Contraseña_Login) " +
+                                "VALUES (@Num_Cliente, @Rut, @Nombre_Empresa, @Usuario_Login, @Contraseña_Login)";
                             cmdEmpresa.CommandText = consultaEmpresa;
                             cmdEmpresa.Parameters.AddWithValue("@Num_Cliente", Convert.ToInt64(ultimoIDCliente)); // Convertir a Int64
                             cmdEmpresa.Parameters.AddWithValue("@Rut", clienteEmpresa.Rut);
                             cmdEmpresa.Parameters.AddWithValue("@Nombre_Empresa", clienteEmpresa.Nombre_Empresa);
                             cmdEmpresa.Parameters.AddWithValue("@Usuario_Login", clienteEmpresa.UsuarioEmpresa);
+                            cmdEmpresa.Parameters.AddWithValue("@Contraseña_Login", clienteEmpresa.ContraseñaEmpresa);
                             cmdEmpresa.ExecuteNonQuery();
                         }
                         catch (Exception ex)

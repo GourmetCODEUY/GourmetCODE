@@ -167,10 +167,20 @@ namespace proyecto.Presentacion
         {
             MostrarFormularioSecundario(formClienteSubMenu);
 
-            if (rolUsuario == 2)
-                formClienteSubMenu.ActualizarVisibilidadBoton(false, true);
-            else
+            // Comprueba el rol y ajusta la visibilidad de los botones "Registro" y "Alta"
+            if (rolUsuario == 2) // Gerente
+            {
                 formClienteSubMenu.ActualizarVisibilidadBoton(true, false);
+            }
+            else if (rolUsuario == 3) // Administración
+            {
+                formClienteSubMenu.ActualizarVisibilidadBoton(false, true);
+            }
+            else
+            {
+                // En otros casos, oculta ambos botones
+                formClienteSubMenu.ActualizarVisibilidadBoton(false, false);
+            }
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)

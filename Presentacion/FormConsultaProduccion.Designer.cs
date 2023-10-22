@@ -63,10 +63,10 @@
             ID_Comida.HeaderText = "ID de Comida";
             ID_Comida.Name = "ID_Comida";
             // 
-            // Descripcion_Menu
+            // Desc_Menu
             // 
             Desc_Menu.HeaderText = "Descripcion de Menu";
-            Desc_Menu.Name = "Descripcion_Menu";
+            Desc_Menu.Name = "Desc_Menu";
             // 
             // btnConsultaProduccion
             // 
@@ -83,7 +83,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
-            ClientSize = new Size(876, 478);
+            ClientSize = new Size(924, 595);
             Controls.Add(btnConsultaProduccion);
             Controls.Add(dgvConsultaProduccion);
             FormBorderStyle = FormBorderStyle.None;

@@ -85,8 +85,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DimGray;
-            ClientSize = new Size(924, 595);
+            BackColor = Color.FromArgb(66, 125, 125);
+            ClientSize = new Size(908, 556);
             Controls.Add(btnProduccion);
             Controls.Add(btnPedidos);
             Controls.Add(btnProducto);

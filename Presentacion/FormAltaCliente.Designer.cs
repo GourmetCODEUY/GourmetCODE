@@ -54,6 +54,12 @@
             txtPrimerNombre = new TextBox();
             btAceptarComun = new Button();
             gbClienteEmpresa = new GroupBox();
+            txtBarrioEmpresa = new TextBox();
+            label24 = new Label();
+            cmbZonasEmpresa = new ComboBox();
+            label23 = new Label();
+            cmbDepartamentosEmpresa = new ComboBox();
+            label22 = new Label();
             txtTelefonoEmpresa = new TextBox();
             label21 = new Label();
             cbCondicionEmpresa = new ComboBox();
@@ -74,14 +80,17 @@
             rbClienteEmpresa = new RadioButton();
             label3 = new Label();
             label4 = new Label();
+            pcbZona = new PictureBox();
+            label25 = new Label();
             gbClienteComun.SuspendLayout();
             gbClienteEmpresa.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pcbZona).BeginInit();
             SuspendLayout();
             // 
             // rbClienteComun
             // 
             rbClienteComun.AutoSize = true;
-            rbClienteComun.Location = new Point(348, 104);
+            rbClienteComun.Location = new Point(348, 73);
             rbClienteComun.Name = "rbClienteComun";
             rbClienteComun.Size = new Size(105, 19);
             rbClienteComun.TabIndex = 3;
@@ -115,7 +124,7 @@
             gbClienteComun.Controls.Add(label7);
             gbClienteComun.Controls.Add(txtPrimerNombre);
             gbClienteComun.Controls.Add(btAceptarComun);
-            gbClienteComun.Location = new Point(235, 158);
+            gbClienteComun.Location = new Point(219, 98);
             gbClienteComun.Name = "gbClienteComun";
             gbClienteComun.Size = new Size(485, 220);
             gbClienteComun.TabIndex = 4;
@@ -322,16 +331,23 @@
             // 
             // btAceptarComun
             // 
-            btAceptarComun.Location = new Point(404, 183);
+            btAceptarComun.BackColor = Color.SkyBlue;
+            btAceptarComun.Location = new Point(404, 191);
             btAceptarComun.Name = "btAceptarComun";
             btAceptarComun.Size = new Size(75, 23);
             btAceptarComun.TabIndex = 7;
             btAceptarComun.Text = "Aceptar";
-            btAceptarComun.UseVisualStyleBackColor = true;
+            btAceptarComun.UseVisualStyleBackColor = false;
             btAceptarComun.Click += btAceptarComun_Click;
             // 
             // gbClienteEmpresa
             // 
+            gbClienteEmpresa.Controls.Add(txtBarrioEmpresa);
+            gbClienteEmpresa.Controls.Add(label24);
+            gbClienteEmpresa.Controls.Add(cmbZonasEmpresa);
+            gbClienteEmpresa.Controls.Add(label23);
+            gbClienteEmpresa.Controls.Add(cmbDepartamentosEmpresa);
+            gbClienteEmpresa.Controls.Add(label22);
             gbClienteEmpresa.Controls.Add(txtTelefonoEmpresa);
             gbClienteEmpresa.Controls.Add(label21);
             gbClienteEmpresa.Controls.Add(cbCondicionEmpresa);
@@ -349,11 +365,68 @@
             gbClienteEmpresa.Controls.Add(label18);
             gbClienteEmpresa.Controls.Add(txtNombreEmpresa);
             gbClienteEmpresa.Controls.Add(btAceptarEmpresa);
-            gbClienteEmpresa.Location = new Point(235, 395);
+            gbClienteEmpresa.Location = new Point(213, 98);
             gbClienteEmpresa.Name = "gbClienteEmpresa";
-            gbClienteEmpresa.Size = new Size(485, 165);
+            gbClienteEmpresa.Size = new Size(485, 248);
             gbClienteEmpresa.TabIndex = 5;
             gbClienteEmpresa.TabStop = false;
+            // 
+            // txtBarrioEmpresa
+            // 
+            txtBarrioEmpresa.Location = new Point(126, 210);
+            txtBarrioEmpresa.Name = "txtBarrioEmpresa";
+            txtBarrioEmpresa.Size = new Size(100, 23);
+            txtBarrioEmpresa.TabIndex = 60;
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.ForeColor = SystemColors.ButtonFace;
+            label24.Location = new Point(11, 218);
+            label24.Name = "label24";
+            label24.Size = new Size(38, 15);
+            label24.TabIndex = 59;
+            label24.Text = "Barrio";
+            // 
+            // cmbZonasEmpresa
+            // 
+            cmbZonasEmpresa.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbZonasEmpresa.FormattingEnabled = true;
+            cmbZonasEmpresa.Location = new Point(125, 177);
+            cmbZonasEmpresa.Name = "cmbZonasEmpresa";
+            cmbZonasEmpresa.Size = new Size(121, 23);
+            cmbZonasEmpresa.TabIndex = 58;
+            cmbZonasEmpresa.SelectedIndexChanged += cmbZonasEmpresa_SelectedIndexChanged;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.ForeColor = SystemColors.ButtonFace;
+            label23.Location = new Point(9, 185);
+            label23.Name = "label23";
+            label23.Size = new Size(39, 15);
+            label23.TabIndex = 57;
+            label23.Text = "Zonas";
+            // 
+            // cmbDepartamentosEmpresa
+            // 
+            cmbDepartamentosEmpresa.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbDepartamentosEmpresa.FormattingEnabled = true;
+            cmbDepartamentosEmpresa.Location = new Point(125, 145);
+            cmbDepartamentosEmpresa.Name = "cmbDepartamentosEmpresa";
+            cmbDepartamentosEmpresa.Size = new Size(121, 23);
+            cmbDepartamentosEmpresa.TabIndex = 56;
+            cmbDepartamentosEmpresa.SelectedIndexChanged += cmbDepartamentosEmpresa_SelectedIndexChanged_1;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.ForeColor = SystemColors.ButtonFace;
+            label22.Location = new Point(6, 153);
+            label22.Name = "label22";
+            label22.Size = new Size(88, 15);
+            label22.TabIndex = 55;
+            label22.Text = "Departamentos";
             // 
             // txtTelefonoEmpresa
             // 
@@ -361,13 +434,14 @@
             txtTelefonoEmpresa.Name = "txtTelefonoEmpresa";
             txtTelefonoEmpresa.Size = new Size(100, 23);
             txtTelefonoEmpresa.TabIndex = 54;
+            txtTelefonoEmpresa.KeyPress += txtTelefonoEmpresa_KeyPress;
             // 
             // label21
             // 
             label21.AutoSize = true;
             label21.BackColor = Color.Transparent;
             label21.ForeColor = Color.White;
-            label21.Location = new Point(232, 114);
+            label21.Location = new Point(237, 114);
             label21.Name = "label21";
             label21.Size = new Size(52, 15);
             label21.TabIndex = 53;
@@ -375,10 +449,12 @@
             // 
             // cbCondicionEmpresa
             // 
+            cbCondicionEmpresa.DropDownStyle = ComboBoxStyle.DropDownList;
             cbCondicionEmpresa.FormattingEnabled = true;
+            cbCondicionEmpresa.Items.AddRange(new object[] { "vegetariano", "Ovolácteovegetariano", "Ovovegetariano", "vegano", "celíaco" });
             cbCondicionEmpresa.Location = new Point(304, 77);
             cbCondicionEmpresa.Name = "cbCondicionEmpresa";
-            cbCondicionEmpresa.Size = new Size(100, 23);
+            cbCondicionEmpresa.Size = new Size(128, 23);
             cbCondicionEmpresa.TabIndex = 52;
             // 
             // label19
@@ -386,7 +462,7 @@
             label19.AutoSize = true;
             label19.BackColor = Color.Transparent;
             label19.ForeColor = Color.White;
-            label19.Location = new Point(232, 85);
+            label19.Location = new Point(237, 85);
             label19.Name = "label19";
             label19.Size = new Size(62, 15);
             label19.TabIndex = 52;
@@ -404,7 +480,7 @@
             label10.AutoSize = true;
             label10.BackColor = Color.Transparent;
             label10.ForeColor = Color.White;
-            label10.Location = new Point(8, 85);
+            label10.Location = new Point(7, 90);
             label10.Name = "label10";
             label10.Size = new Size(33, 15);
             label10.TabIndex = 39;
@@ -422,7 +498,7 @@
             label15.AutoSize = true;
             label15.BackColor = Color.Transparent;
             label15.ForeColor = Color.White;
-            label15.Location = new Point(8, 111);
+            label15.Location = new Point(7, 116);
             label15.Name = "label15";
             label15.Size = new Size(41, 15);
             label15.TabIndex = 38;
@@ -433,7 +509,7 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.ForeColor = Color.White;
-            label6.Location = new Point(232, 51);
+            label6.Location = new Point(237, 56);
             label6.Name = "label6";
             label6.Size = new Size(67, 15);
             label6.TabIndex = 49;
@@ -445,6 +521,7 @@
             txtPuertaEmpresa.Name = "txtPuertaEmpresa";
             txtPuertaEmpresa.Size = new Size(100, 23);
             txtPuertaEmpresa.TabIndex = 37;
+            txtPuertaEmpresa.KeyPress += txtPuertaEmpresa_KeyPress;
             // 
             // txtUsuarioEmpresa
             // 
@@ -452,6 +529,7 @@
             txtUsuarioEmpresa.Name = "txtUsuarioEmpresa";
             txtUsuarioEmpresa.Size = new Size(100, 23);
             txtUsuarioEmpresa.TabIndex = 34;
+            txtUsuarioEmpresa.KeyPress += txtUsuarioEmpresa_KeyPress;
             // 
             // txtRut
             // 
@@ -459,13 +537,14 @@
             txtRut.Name = "txtRut";
             txtRut.Size = new Size(100, 23);
             txtRut.TabIndex = 48;
+            txtRut.KeyPress += txtRut_KeyPress;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.ForeColor = Color.White;
-            label5.Location = new Point(232, 19);
+            label5.Location = new Point(237, 24);
             label5.Name = "label5";
             label5.Size = new Size(47, 15);
             label5.TabIndex = 33;
@@ -476,7 +555,7 @@
             label17.AutoSize = true;
             label17.BackColor = Color.Transparent;
             label17.ForeColor = Color.White;
-            label17.Location = new Point(7, 56);
+            label17.Location = new Point(6, 56);
             label17.Name = "label17";
             label17.Size = new Size(28, 15);
             label17.TabIndex = 41;
@@ -487,7 +566,7 @@
             label18.AutoSize = true;
             label18.BackColor = Color.Transparent;
             label18.ForeColor = Color.White;
-            label18.Location = new Point(7, 19);
+            label18.Location = new Point(6, 24);
             label18.Name = "label18";
             label18.Size = new Size(99, 15);
             label18.TabIndex = 40;
@@ -499,21 +578,23 @@
             txtNombreEmpresa.Name = "txtNombreEmpresa";
             txtNombreEmpresa.Size = new Size(100, 23);
             txtNombreEmpresa.TabIndex = 39;
+            txtNombreEmpresa.KeyPress += txtNombreEmpresa_KeyPress;
             // 
             // btAceptarEmpresa
             // 
-            btAceptarEmpresa.Location = new Point(404, 134);
+            btAceptarEmpresa.BackColor = Color.SkyBlue;
+            btAceptarEmpresa.Location = new Point(404, 218);
             btAceptarEmpresa.Name = "btAceptarEmpresa";
             btAceptarEmpresa.Size = new Size(75, 23);
             btAceptarEmpresa.TabIndex = 6;
             btAceptarEmpresa.Text = "Aceptar";
-            btAceptarEmpresa.UseVisualStyleBackColor = true;
+            btAceptarEmpresa.UseVisualStyleBackColor = false;
             btAceptarEmpresa.Click += btAceptarEmpresa_Click;
             // 
             // rbClienteEmpresa
             // 
             rbClienteEmpresa.AutoSize = true;
-            rbClienteEmpresa.Location = new Point(502, 104);
+            rbClienteEmpresa.Location = new Point(502, 73);
             rbClienteEmpresa.Name = "rbClienteEmpresa";
             rbClienteEmpresa.Size = new Size(110, 19);
             rbClienteEmpresa.TabIndex = 5;
@@ -540,12 +621,32 @@
             label4.TabIndex = 9;
             label4.Text = "SELECCIONE UNA OPCION:";
             // 
+            // pcbZona
+            // 
+            pcbZona.Location = new Point(12, 356);
+            pcbZona.Name = "pcbZona";
+            pcbZona.Size = new Size(235, 227);
+            pcbZona.TabIndex = 10;
+            pcbZona.TabStop = false;
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.ForeColor = SystemColors.ButtonFace;
+            label25.Location = new Point(12, 331);
+            label25.Name = "label25";
+            label25.Size = new Size(39, 15);
+            label25.TabIndex = 61;
+            label25.Text = "Zonas";
+            // 
             // FormAltaCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DimGray;
+            BackColor = Color.FromArgb(66, 125, 125);
             ClientSize = new Size(924, 595);
+            Controls.Add(label25);
+            Controls.Add(pcbZona);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(gbClienteEmpresa);
@@ -554,11 +655,11 @@
             Controls.Add(rbClienteComun);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormAltaCliente";
-            Click += FormAltaCliente_Click;
             gbClienteComun.ResumeLayout(false);
             gbClienteComun.PerformLayout();
             gbClienteEmpresa.ResumeLayout(false);
             gbClienteEmpresa.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pcbZona).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -617,5 +718,13 @@
         private Label label20;
         private TextBox txtTelefonoEmpresa;
         private Label label21;
+        private ComboBox cmbDepartamentosEmpresa;
+        private Label label22;
+        private ComboBox cmbZonasEmpresa;
+        private Label label23;
+        private TextBox txtBarrioEmpresa;
+        private Label label24;
+        private PictureBox pcbZona;
+        private Label label25;
     }
 }

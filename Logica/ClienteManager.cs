@@ -1,6 +1,7 @@
 ﻿using proyecto.Persistencia;
 using System;
 using System.Data;
+using System.Linq;
 
 namespace proyecto.Logica
 {
@@ -39,19 +40,45 @@ namespace proyecto.Logica
             }
         }
 
-        public void InsertarClienteEmpresa(string rut, string nomEmpresa, string usuarioLoginEmpresa, string contraseñaLoginEmpresa, string telefonoEmpresa, string calleEmpresa, string puertaEmpresa)
+        public void InsertarClienteEmpresa(string rut, string nomEmpresa, string usuarioLoginEmpresa, string contraseñaLoginEmpresa, string telefonoEmpresa, string calleEmpresa, string puertaEmpresa, string departamento, string zona)
         {
             try
             {
+                // Realizar validaciones aquí antes de insertar los datos en la base de datos.
+                if (rut.Length > 12 || !EsNumero(rut))
+                {
+                    throw new Exception("El RUT debe ser numérico y no debe ser mayor a 12 caracteres.");
+                }
+                if (!EsTextoValido(nomEmpresa, 20))
+                {
+                    throw new Exception("El nombre de la empresa debe ser un texto de no más de 20 caracteres.");
+                }
+                if (!EsTextoValido(usuarioLoginEmpresa, 20))
+                {
+                    throw new Exception("El usuario de inicio de sesión debe ser un texto de no más de 20 caracteres.");
+                }
+                if (contraseñaLoginEmpresa.Length > 20)
+                {
+                    throw new Exception("La contraseña de inicio de sesión no debe ser mayor a 20 caracteres.");
+                }
+
+                // Validar otros campos aquí
+                if (zona != "Zona1" && zona != "Zona2")
+                {
+                    throw new Exception("La zona seleccionada no es válida.");
+                }
+
                 ClienteEmpresa nuevoClienteEmpresa = new ClienteEmpresa
-                {                   
+                {
                     Rut = rut,
                     Nombre_Empresa = nomEmpresa,
                     UsuarioEmpresa = usuarioLoginEmpresa,
                     ContraseñaEmpresa = contraseñaLoginEmpresa,
                     Telefono_Empresa = telefonoEmpresa,
                     Calle_Empresa = calleEmpresa,
-                    Puerta_Empresa = puertaEmpresa
+                    Puerta_Empresa = puertaEmpresa,
+                    Departamento = departamento,
+                    Zona = zona
                 };
 
                 clienteRepository.InsertarClienteEmpresa(nuevoClienteEmpresa);
@@ -60,6 +87,16 @@ namespace proyecto.Logica
             {
                 throw new Exception("Error al insertar el cliente de empresa: " + ex.Message);
             }
+        }
+
+        private bool EsTextoValido(string texto, int maxLength)
+        {
+            return !string.IsNullOrEmpty(texto) && texto.Length <= maxLength && !texto.Any(char.IsDigit);
+        }
+
+        private bool EsNumero(string texto)
+        {
+            return long.TryParse(texto, out _);
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Proyecto.Persistencia
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al obtener los productos desde la base de datos.", ex);
+                throw new Exception("Error al obtener los datos de MENU desde la base de datos.", ex);
             }
             return productosList;
         }
