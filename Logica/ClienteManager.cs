@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Linq;
+using System.Security.Policy;
 
 namespace proyecto.Logica
 {
@@ -13,7 +14,28 @@ namespace proyecto.Logica
         {
             clienteRepository = new ClienteRepository();
         }
-
+        public List<string> ObtenerDepartamentosDesdeBD()
+        {
+            try
+            {
+                return clienteRepository.ObtenerDepartamentosDesdeBD();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener departamentos desde la base de datos: " + ex.Message);
+            }
+        }
+        public List<string> ObtenerZonasPorDepartamentoDesdeBD(string departamento)
+        {
+            try
+            {
+                return clienteRepository.ObtenerZonasPorDepartamentoDesdeBD(departamento);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener zonas desde la base de datos: " + ex.Message);
+            }
+        }
         public void InsertarClienteComun(string ciClienteComun, string primerNombre, string segundoNombre, string telefonoComun, string primerApellido, string segundoApellido, string calleComun, string puertaComun, string usuarioComun, string contraseñaComun)
         {
             try
@@ -40,8 +62,16 @@ namespace proyecto.Logica
             }
         }
 
-        public void InsertarClienteEmpresa(string rut, string nomEmpresa, string usuarioLoginEmpresa, string contraseñaLoginEmpresa, string telefonoEmpresa, string calleEmpresa, string puertaEmpresa, string departamento, string zona)
+        public void InsertarClienteEmpresa(int ID_Sucursal, string rut, string nomEmpresa, string usuarioLoginEmpresa, string contraseñaLoginEmpresa, string telefonoEmpresa, string calleEmpresa, string puertaEmpresa, string zonaEmpresa, string departamentoEmpresa, string condicionClinica)
         {
+            int idDepartamento = clienteRepository.ObtenerIDDepartamentoPorNombre(departamentoEmpresa);
+
+            if (idDepartamento < 0)
+            {
+                MessageBox.Show("El departamento no se encuentra en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             try
             {
                 // Realizar validaciones aquí antes de insertar los datos en la base de datos.
@@ -62,12 +92,6 @@ namespace proyecto.Logica
                     throw new Exception("La contraseña de inicio de sesión no debe ser mayor a 20 caracteres.");
                 }
 
-                // Validar otros campos aquí
-                if (zona != "Zona1" && zona != "Zona2")
-                {
-                    throw new Exception("La zona seleccionada no es válida.");
-                }
-
                 ClienteEmpresa nuevoClienteEmpresa = new ClienteEmpresa
                 {
                     Rut = rut,
@@ -77,15 +101,18 @@ namespace proyecto.Logica
                     Telefono_Empresa = telefonoEmpresa,
                     Calle_Empresa = calleEmpresa,
                     Puerta_Empresa = puertaEmpresa,
-                    Departamento = departamento,
-                    Zona = zona
+                    Departamento = departamentoEmpresa,
+                    Zona_Empresa = zonaEmpresa,
+                    Condicion_Clinica = condicionClinica,
+                    ID_Sucursal = idDepartamento
                 };
 
                 clienteRepository.InsertarClienteEmpresa(nuevoClienteEmpresa);
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al insertar el cliente de empresa: " + ex.Message);
+                MessageBox.Show("La zona seleccionada (" + zonaEmpresa + ") no es válida para el departamento " + departamentoEmpresa + ex.Message + ex + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -98,5 +125,5 @@ namespace proyecto.Logica
         {
             return long.TryParse(texto, out _);
         }
-    }
+    } 
 }

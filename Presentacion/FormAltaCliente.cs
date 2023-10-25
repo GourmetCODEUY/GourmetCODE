@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using proyecto.Logica;
+using proyecto.Persistencia;
 
 namespace proyecto.Presentacion
 {
@@ -22,6 +24,11 @@ namespace proyecto.Presentacion
             gbClienteComun.Visible = false;
             gbClienteEmpresa.Visible = false;
             clienteManager = new ClienteManager();
+
+
+            CargarDepartamentosDesdeBD();
+            
+
             //APLICAR LIMITES A LOS CAMPOS DE TEXTO EMPRESA:
             txtCalleEmpresa.MaxLength = 20;
             txtContraseñaEmpresa.MaxLength = 20;
@@ -30,34 +37,77 @@ namespace proyecto.Presentacion
             txtTelefonoEmpresa.MaxLength = 9;
             txtBarrioEmpresa.MaxLength = 20;
 
-            // Configura la relación entre departamentos y zonas
-            ConfigurarDepartamentosYZonas();
-        }
-        private void ConfigurarDepartamentosYZonas()
-        {
-            // Define las zonas para cada departamento
-            departamentosZonas.Add("Artigas", new List<string> { "Zona1", "Zona2" });
-            departamentosZonas.Add("Canelones", new List<string> { "Zona3", "Zona4" });
-            departamentosZonas.Add("Cerro Largo", new List<string> { "Zona5", "Zona6" });
-            departamentosZonas.Add("Colonia", new List<string> { "Zona7", "Zona8" });
-            departamentosZonas.Add("Durazno", new List<string> { "Zona9", "Zona10" });
-            departamentosZonas.Add("Flores", new List<string> { "Zona11", "Zona12" });
-            departamentosZonas.Add("Florida", new List<string> { "Zona13", "Zona14" });
-            departamentosZonas.Add("Lavalleja", new List<string> { "Zona15", "Zona16" });
-            departamentosZonas.Add("Maldonado", new List<string> { "Zona17", "Zona18" });
-            departamentosZonas.Add("Montevideo", new List<string> { "Zona19", "Zona20", "Zona21", "Zona22", "Zona23", "Zona24", "Zona25" });
-            departamentosZonas.Add("Paysandú", new List<string> { "Zona26", "Zona27" });
-            departamentosZonas.Add("Río Negro", new List<string> { "Zona28", "Zona29" });
-            departamentosZonas.Add("Rivera", new List<string> { "Zona30", "Zona31" });
-            departamentosZonas.Add("Rocha", new List<string> { "Zona32", "Zona33" });
-            departamentosZonas.Add("Salto", new List<string> { "Zona34", "Zona35" });
-            departamentosZonas.Add("San José", new List<string> { "Zona36", "Zona37" });
-            departamentosZonas.Add("Soriano", new List<string> { "Zona38", "Zona39" });
-            departamentosZonas.Add("Tacuarembó", new List<string> { "Zona40", "Zona41" });
-            departamentosZonas.Add("Treinta y Tres", new List<string> { "Zona42", "Zona43" });
+            //PONEMOS TODOS LOS PICTURE BOX EN NO VISIBLE
+            pcbZona1.Visible = false;
+            pcbZona2.Visible = false;
+            pcbZona3.Visible = false;
+            pcbZona4.Visible = false;
+            pcbZona5.Visible = false;
+            pcbZona6.Visible = false;
+            pcbZona7.Visible = false;
+            pcbZona8.Visible = false;
+            pcbZona9.Visible = false;
+            pcbZona10.Visible = false;
+            pcbZona11.Visible = false;
+            pcbZona12.Visible = false;
+            pcbZona13.Visible = false;
+            pcbZona14.Visible = false;
+            pcbZona15.Visible = false;
+            pcbZona16.Visible = false;
+            pcbZona17.Visible = false;
+            pcbZona18.Visible = false;
+            pcbZona19.Visible = false;
+            pcbZona20.Visible = false;
+            pcbZona21.Visible = false;
+            pcbZona22.Visible = false;
+            pcbZona23.Visible = false;
+            pcbZona24.Visible = false;
+            pcbZona25.Visible = false;
+            pcbZona26.Visible = false;
+            pcbZona27.Visible = false;
+            pcbZona28.Visible = false;
+            pcbZona29.Visible = false;
+            pcbZona30.Visible = false;
+            pcbZona31.Visible = false;
+            pcbZona32.Visible = false;
+            pcbZona33.Visible = false;
+            pcbZona34.Visible = false;
+            pcbZona35.Visible = false;
+            pcbZona36.Visible = false;
+            pcbZona37.Visible = false;
+            pcbZona38.Visible = false;
+            pcbZona39.Visible = false;
+            pcbZona40.Visible = false;
+            pcbZona41.Visible = false;
+            pcbZona42.Visible = false;
+            pcbZona43.Visible = false;
 
-            // Llena el combo de departamentos con los nombres de los departamentos
-            cmbDepartamentosEmpresa.Items.AddRange(departamentosZonas.Keys.ToArray());
+            // Asociar el evento de selección para el ComboBox de departamentos
+            cmbDepartamentosEmpresa.SelectedIndexChanged += cmbDepartamentosEmpresa_SelectedIndexChanged;
+
+            // Asociar el evento de selección para el ComboBox de zonas
+            cmbZonasEmpresa.SelectedIndexChanged += cmbZonasEmpresa_SelectedIndexChanged;
+        }
+        private void CargarDepartamentosDesdeBD()
+        {
+            try
+            {
+                // Llama al método del clienteManager para obtener los departamentos desde la base de datos
+                List<string> departamentos = clienteManager.ObtenerDepartamentosDesdeBD();
+
+                // Limpia cualquier elemento existente en el ComboBox
+                cmbDepartamentosEmpresa.Items.Clear();
+
+                // Agrega los departamentos al ComboBox
+                cmbDepartamentosEmpresa.Items.AddRange(departamentos.ToArray());
+
+                // Opcional: Selecciona un departamento por defecto si es necesario
+                // cmbDepartamentosEmpresa.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar departamentos desde la base de datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void rbClienteComun_CheckedChanged(object sender, EventArgs e)
         {
@@ -110,12 +160,13 @@ namespace proyecto.Presentacion
                 string puertaEmpresa = txtPuertaEmpresa.Text;
                 string departamentoEmpresa = cmbDepartamentosEmpresa.SelectedItem as string;
                 string zonaEmpresa = cmbZonasEmpresa.SelectedItem as string;
-
-                // Llamar al método para insertar un cliente de empresa
-                clienteManager.InsertarClienteEmpresa(rut, nomEmpresa, usuarioLoginEmpresa, contraseñaLoginEmpresa, telefonoEmpresa, calleEmpresa, puertaEmpresa, departamentoEmpresa, zonaEmpresa);
+                string condicionClinica = CondicionClinica.SelectedItem as string; // Obtener el valor seleccionado del ComboBox
+                int ID_Sucursal= 0;
+                // Llama al método para insertar un cliente de empresa
+                clienteManager.InsertarClienteEmpresa(ID_Sucursal, rut, nomEmpresa, usuarioLoginEmpresa, contraseñaLoginEmpresa, telefonoEmpresa, calleEmpresa, puertaEmpresa, zonaEmpresa, departamentoEmpresa, condicionClinica);
 
                 // Limpiar los TextBox después de una inserción exitosa
-                cbCondicionEmpresa.SelectedIndex = -1;
+                CondicionClinica.SelectedIndex = 0;
                 txtRut.Text = "";
                 txtNombreEmpresa.Text = "";
                 txtUsuarioEmpresa.Text = "";
@@ -123,8 +174,8 @@ namespace proyecto.Presentacion
                 txtTelefonoEmpresa.Text = "";
                 txtCalleEmpresa.Text = "";
                 txtPuertaEmpresa.Text = "";
-                cmbDepartamentosEmpresa.SelectedIndex = -1;
-                cmbZonasEmpresa.Items.Clear();
+                cmbDepartamentosEmpresa.SelectedIndex = 0;
+                cmbZonasEmpresa.SelectedIndex = 0; // No es necesario limpiar esto, ya que se establecerá en la zona seleccionada.
 
                 MessageBox.Show("Cliente de empresa creado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -133,6 +184,7 @@ namespace proyecto.Presentacion
                 MessageBox.Show("Error al crear el cliente de empresa: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void txtNombreEmpresa_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -174,15 +226,6 @@ namespace proyecto.Presentacion
             }
         }
 
-        private void txtContraseñaEmpresa_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Verifica si el carácter ingresado no es un número ni una tecla de control.
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                // Si no es un número ni una tecla de control, suprime el carácter ingresado.
-                e.Handled = true;
-            }
-        }
 
         private void txtTelefonoEmpresa_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -194,86 +237,69 @@ namespace proyecto.Presentacion
             }
         }
 
-        private void cmbDepartamentosEmpresa_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void cmbDepartamentosEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Cuando el usuario selecciona un departamento, llena el combo de zonas con las zonas correspondientes
             string selectedDepartamento = cmbDepartamentosEmpresa.SelectedItem as string;
 
-            if (departamentosZonas.ContainsKey(selectedDepartamento))
+            if (!string.IsNullOrEmpty(selectedDepartamento))
             {
-                cmbZonasEmpresa.Items.Clear();
-                cmbZonasEmpresa.Items.AddRange(departamentosZonas[selectedDepartamento].ToArray());
-            }
-            else
-            {
-                cmbZonasEmpresa.Items.Clear();
+                // Realizar la consulta a la base de datos para obtener las zonas del departamento seleccionado
+                CargarZonasDesdeBD(selectedDepartamento);
             }
         }
-        private string ObtenerNombreArchivoImagen(string zona)
+        private void CargarZonasDesdeBD(string departamento)
         {
-            Dictionary<string, string> zonasImagenes = new Dictionary<string, string>
-        {
-             { "Zona1", "imagen1.jpg" },
-            { "Zona2", "imagen2.jpg" },
-            { "Zona3", "imagen3.jpg" },
-            { "Zona4", "imagen4.jpg" },
-            { "Zona5", "imagen5.jpg" },
-            { "Zona6", "imagen6.jpg" },
-            { "Zona7", "imagen7.jpg" },
-            { "Zona8", "imagen8.jpg" },
-            { "Zona9", "imagen9.jpg" },
-            { "Zona10", "imagen10.jpg" },
-            { "Zona11", "imagen11.jpg" },
-            { "Zona12", "imagen12.jpg" },
-            { "Zona13", "imagen13.jpg" },
-            { "Zona14", "imagen14.jpg" },
-            { "Zona15", "imagen15.jpg" },
-            { "Zona16", "imagen16.jpg" },
-            { "Zona17", "imagen17.jpg" },
-            { "Zona18", "imagen18.jpg" },
-            { "Zona19", "imagen19.jpg" },
-            { "Zona20", "imagen20.jpg" },
-            { "Zona21", "imagen21.jpg" },
-            { "Zona22", "imagen22.jpg" },
-            { "Zona23", "imagen23.jpg" },
-            { "Zona24", "imagen24.jpg" },
-            { "Zona25", "imagen25.jpg" },
-            { "Zona26", "imagen26.jpg" },
-            { "Zona27", "imagen27.jpg" },
-            { "Zona28", "imagen28.jpg" },
-            { "Zona29", "imagen29.jpg" },
-            { "Zona30", "imagen30.jpg" },
-            { "Zona31", "imagen31.jpg" },
-            { "Zona32", "imagen32.jpg" },
-            { "Zona33", "imagen33.jpg" },
-            { "Zona34", "imagen34.jpg" },
-            { "Zona35", "imagen35.jpg" },
-            { "Zona36", "imagen36.jpg" },
-            { "Zona37", "imagen37.jpg" },
-            { "Zona38", "imagen38.jpg" },
-            { "Zona39", "imagen39.jpg" },
-            { "Zona40", "imagen40.jpg" },
-            { "Zona41", "imagen41.jpg" },
-            { "Zona42", "imagen42.jpg" },
-            { "Zona43", "imagen43.jpg" }
-        };
-
-            if (zonasImagenes.ContainsKey(zona))
+            try
             {
-                return zonasImagenes[zona];
-            }
+                // Llama al método del clienteManager para obtener las zonas del departamento desde la base de datos
+                List<string> zonas = clienteManager.ObtenerZonasPorDepartamentoDesdeBD(departamento);
 
-            return null;
+                // Limpia cualquier elemento existente en el ComboBox
+                cmbZonasEmpresa.Items.Clear();
+
+                // Agrega las zonas al ComboBox
+                cmbZonasEmpresa.Items.AddRange(zonas.ToArray());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar zonas desde la base de datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cmbZonasEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string zonaSeleccionada = cmbZonasEmpresa.SelectedItem as string;
-            string nombreArchivoImagen = ObtenerNombreArchivoImagen(zonaSeleccionada);
+            // Asegúrate de que el nombre de tus PictureBox siga el patrón "pcbZonaX"
+            string selectedZona = cmbZonasEmpresa.SelectedItem.ToString();
+            int zonaNumber;
 
-            if (nombreArchivoImagen != null)
+            // Intenta extraer el número de la opción seleccionada
+            if (int.TryParse(selectedZona.Replace("Zona", ""), out zonaNumber))
             {
-                pcbZona.Image = (Image)Properties.Resources.ResourceManager.GetObject(nombreArchivoImagen);
+                // Oculta todos los PictureBox
+                foreach (Control control in this.Controls)
+                {
+                    if (control is PictureBox)
+                    {
+                        control.Visible = false;
+                    }
+                }
+
+                // Muestra el PictureBox correspondiente a la opción seleccionada
+                Control pictureBoxToShow = this.Controls.Find("pcbZona" + zonaNumber, true).FirstOrDefault();
+                if (pictureBoxToShow is PictureBox)
+                {
+                    pictureBoxToShow.Visible = true;
+                }
+            }
+        }
+
+        private void txtContraseñaEmpresa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si el carácter ingresado no es un número ni una tecla de control.
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Si no es un número ni una tecla de control, suprime el carácter ingresado.
+                e.Handled = true;
             }
         }
     }

@@ -19,6 +19,7 @@ C:\Users\maurito\source\repos\interfaz\interfaz\obj\Release\net6.0-windows\ref\p
 C:\Users\maurito\source\repos\interfaz\interfaz\obj\Release\net6.0-windows\proyecto.Presentacion.FormMenu.resources
 C:\Users\maurito\source\repos\interfaz\interfaz\obj\Release\net6.0-windows\proyecto.Presentacion.FormAltaCliente.resources
 C:\Users\maurito\Desktop\GourmetCODE-main\obj\Release\net6.0-windows\proyecto.csproj.AssemblyReference.cache
+C:\Users\maurito\Desktop\GourmetCODE-main\obj\Release\net6.0-windows\proyecto.g.resources
 C:\Users\maurito\Desktop\GourmetCODE-main\obj\Release\net6.0-windows\proyecto.Presentacion.FormAltaCliente.resources
 C:\Users\maurito\Desktop\GourmetCODE-main\obj\Release\net6.0-windows\proyecto.Presentacion.FormAutorizacionCliente.resources
 C:\Users\maurito\Desktop\GourmetCODE-main\obj\Release\net6.0-windows\proyecto.Presentacion.FormBajaCliente.resources

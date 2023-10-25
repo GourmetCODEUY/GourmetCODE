@@ -128,3 +128,4 @@ C:\Users\Maurizio\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\refint\proye
 C:\Users\Maurizio\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.pdb
 C:\Users\Maurizio\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.genruntimeconfig.cache
 C:\Users\Maurizio\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\ref\proyecto.dll
+C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.g.resources

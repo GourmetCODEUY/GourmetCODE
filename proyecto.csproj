@@ -20,6 +20,52 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Zona1.png" />
+    <Resource Include="Resources\Zona10.png" />
+    <Resource Include="Resources\Zona11.png" />
+    <Resource Include="Resources\Zona12.png" />
+    <Resource Include="Resources\Zona13.png" />
+    <Resource Include="Resources\Zona14.png" />
+    <Resource Include="Resources\Zona15.png" />
+    <Resource Include="Resources\Zona16.png" />
+    <Resource Include="Resources\Zona17.png" />
+    <Resource Include="Resources\Zona18.png" />
+    <Resource Include="Resources\Zona19.png" />
+    <Resource Include="Resources\Zona2.png" />
+    <Resource Include="Resources\Zona20.png" />
+    <Resource Include="Resources\Zona21.png" />
+    <Resource Include="Resources\Zona22.png" />
+    <Resource Include="Resources\Zona23.png" />
+    <Resource Include="Resources\Zona24.png" />
+    <Resource Include="Resources\Zona25.png" />
+    <Resource Include="Resources\Zona26.png" />
+    <Resource Include="Resources\Zona27.png" />
+    <Resource Include="Resources\Zona28.png" />
+    <Resource Include="Resources\Zona29.png" />
+    <Resource Include="Resources\Zona3.png" />
+    <Resource Include="Resources\Zona30.png" />
+    <Resource Include="Resources\Zona31.png" />
+    <Resource Include="Resources\Zona32.png" />
+    <Resource Include="Resources\Zona33.png" />
+    <Resource Include="Resources\Zona34.png" />
+    <Resource Include="Resources\Zona35.png" />
+    <Resource Include="Resources\Zona36.png" />
+    <Resource Include="Resources\Zona37.png" />
+    <Resource Include="Resources\ZOna38.png" />
+    <Resource Include="Resources\Zona39.png" />
+    <Resource Include="Resources\Zona4.png" />
+    <Resource Include="Resources\Zona40.png" />
+    <Resource Include="Resources\Zona41.png" />
+    <Resource Include="Resources\Zona42.png" />
+    <Resource Include="Resources\Zona43.png" />
+    <Resource Include="Resources\Zona5.png" />
+    <Resource Include="Resources\Zona6.png" />
+    <Resource Include="Resources\Zona7.png" />
+    <Resource Include="Resources\Zona8.png" />
+    <Resource Include="Resources\Zona9.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

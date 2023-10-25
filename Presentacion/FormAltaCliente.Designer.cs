@@ -30,6 +30,10 @@
         {
             rbClienteComun = new RadioButton();
             gbClienteComun = new GroupBox();
+            comboBox1 = new ComboBox();
+            label26 = new Label();
+            comboBox2 = new ComboBox();
+            label27 = new Label();
             txtTelefonoComun = new TextBox();
             label20 = new Label();
             cbCondicionComun = new ComboBox();
@@ -62,7 +66,7 @@
             label22 = new Label();
             txtTelefonoEmpresa = new TextBox();
             label21 = new Label();
-            cbCondicionEmpresa = new ComboBox();
+            CondicionClinica = new ComboBox();
             label19 = new Label();
             txtCalleEmpresa = new TextBox();
             label10 = new Label();
@@ -80,17 +84,101 @@
             rbClienteEmpresa = new RadioButton();
             label3 = new Label();
             label4 = new Label();
-            pcbZona = new PictureBox();
+            pcbZona1 = new PictureBox();
             label25 = new Label();
+            pcbZona2 = new PictureBox();
+            pcbZona3 = new PictureBox();
+            pcbZona4 = new PictureBox();
+            pcbZona5 = new PictureBox();
+            pcbZona6 = new PictureBox();
+            pcbZona7 = new PictureBox();
+            pcbZona8 = new PictureBox();
+            pcbZona9 = new PictureBox();
+            pcbZona10 = new PictureBox();
+            pcbZona11 = new PictureBox();
+            pcbZona12 = new PictureBox();
+            pcbZona13 = new PictureBox();
+            pcbZona14 = new PictureBox();
+            pcbZona15 = new PictureBox();
+            pcbZona16 = new PictureBox();
+            pcbZona17 = new PictureBox();
+            pcbZona18 = new PictureBox();
+            pcbZona19 = new PictureBox();
+            pcbZona20 = new PictureBox();
+            pcbZona21 = new PictureBox();
+            pcbZona22 = new PictureBox();
+            pcbZona23 = new PictureBox();
+            pcbZona24 = new PictureBox();
+            pcbZona25 = new PictureBox();
+            pcbZona26 = new PictureBox();
+            pcbZona27 = new PictureBox();
+            pcbZona28 = new PictureBox();
+            pcbZona29 = new PictureBox();
+            pcbZona30 = new PictureBox();
+            pcbZona31 = new PictureBox();
+            pcbZona32 = new PictureBox();
+            pcbZona33 = new PictureBox();
+            pcbZona34 = new PictureBox();
+            pcbZona35 = new PictureBox();
+            pcbZona36 = new PictureBox();
+            pcbZona37 = new PictureBox();
+            pcbZona38 = new PictureBox();
+            pcbZona39 = new PictureBox();
+            pcbZona40 = new PictureBox();
+            pcbZona41 = new PictureBox();
+            pcbZona42 = new PictureBox();
+            pcbZona43 = new PictureBox();
             gbClienteComun.SuspendLayout();
             gbClienteEmpresa.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pcbZona).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona8).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona9).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona10).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona11).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona12).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona13).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona14).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona15).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona16).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona17).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona18).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona19).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona20).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona21).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona22).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona23).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona24).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona25).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona26).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona27).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona28).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona29).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona30).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona31).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona32).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona33).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona34).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona35).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona36).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona37).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona38).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona39).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona40).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona41).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona42).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona43).BeginInit();
             SuspendLayout();
             // 
             // rbClienteComun
             // 
             rbClienteComun.AutoSize = true;
-            rbClienteComun.Location = new Point(348, 73);
+            rbClienteComun.Location = new Point(349, 47);
             rbClienteComun.Name = "rbClienteComun";
             rbClienteComun.Size = new Size(105, 19);
             rbClienteComun.TabIndex = 3;
@@ -101,6 +189,10 @@
             // 
             // gbClienteComun
             // 
+            gbClienteComun.Controls.Add(comboBox1);
+            gbClienteComun.Controls.Add(label26);
+            gbClienteComun.Controls.Add(comboBox2);
+            gbClienteComun.Controls.Add(label27);
             gbClienteComun.Controls.Add(txtTelefonoComun);
             gbClienteComun.Controls.Add(label20);
             gbClienteComun.Controls.Add(cbCondicionComun);
@@ -124,11 +216,49 @@
             gbClienteComun.Controls.Add(label7);
             gbClienteComun.Controls.Add(txtPrimerNombre);
             gbClienteComun.Controls.Add(btAceptarComun);
-            gbClienteComun.Location = new Point(219, 98);
+            gbClienteComun.Location = new Point(427, 72);
             gbClienteComun.Name = "gbClienteComun";
-            gbClienteComun.Size = new Size(485, 220);
+            gbClienteComun.Size = new Size(485, 257);
             gbClienteComun.TabIndex = 4;
             gbClienteComun.TabStop = false;
+            // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(125, 223);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 62;
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.ForeColor = SystemColors.ButtonFace;
+            label26.Location = new Point(9, 231);
+            label26.Name = "label26";
+            label26.Size = new Size(39, 15);
+            label26.TabIndex = 61;
+            label26.Text = "Zonas";
+            // 
+            // comboBox2
+            // 
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(125, 191);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(121, 23);
+            comboBox2.TabIndex = 60;
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.ForeColor = SystemColors.ButtonFace;
+            label27.Location = new Point(6, 199);
+            label27.Name = "label27";
+            label27.Size = new Size(88, 15);
+            label27.TabIndex = 59;
+            label27.Text = "Departamentos";
             // 
             // txtTelefonoComun
             // 
@@ -332,7 +462,7 @@
             // btAceptarComun
             // 
             btAceptarComun.BackColor = Color.SkyBlue;
-            btAceptarComun.Location = new Point(404, 191);
+            btAceptarComun.Location = new Point(404, 227);
             btAceptarComun.Name = "btAceptarComun";
             btAceptarComun.Size = new Size(75, 23);
             btAceptarComun.TabIndex = 7;
@@ -350,7 +480,7 @@
             gbClienteEmpresa.Controls.Add(label22);
             gbClienteEmpresa.Controls.Add(txtTelefonoEmpresa);
             gbClienteEmpresa.Controls.Add(label21);
-            gbClienteEmpresa.Controls.Add(cbCondicionEmpresa);
+            gbClienteEmpresa.Controls.Add(CondicionClinica);
             gbClienteEmpresa.Controls.Add(label19);
             gbClienteEmpresa.Controls.Add(txtCalleEmpresa);
             gbClienteEmpresa.Controls.Add(label10);
@@ -365,7 +495,7 @@
             gbClienteEmpresa.Controls.Add(label18);
             gbClienteEmpresa.Controls.Add(txtNombreEmpresa);
             gbClienteEmpresa.Controls.Add(btAceptarEmpresa);
-            gbClienteEmpresa.Location = new Point(213, 98);
+            gbClienteEmpresa.Location = new Point(427, 335);
             gbClienteEmpresa.Name = "gbClienteEmpresa";
             gbClienteEmpresa.Size = new Size(485, 248);
             gbClienteEmpresa.TabIndex = 5;
@@ -416,7 +546,7 @@
             cmbDepartamentosEmpresa.Name = "cmbDepartamentosEmpresa";
             cmbDepartamentosEmpresa.Size = new Size(121, 23);
             cmbDepartamentosEmpresa.TabIndex = 56;
-            cmbDepartamentosEmpresa.SelectedIndexChanged += cmbDepartamentosEmpresa_SelectedIndexChanged_1;
+            cmbDepartamentosEmpresa.SelectedIndexChanged += cmbDepartamentosEmpresa_SelectedIndexChanged;
             // 
             // label22
             // 
@@ -447,15 +577,15 @@
             label21.TabIndex = 53;
             label21.Text = "Telefono";
             // 
-            // cbCondicionEmpresa
+            // CondicionClinica
             // 
-            cbCondicionEmpresa.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbCondicionEmpresa.FormattingEnabled = true;
-            cbCondicionEmpresa.Items.AddRange(new object[] { "vegetariano", "Ovolácteovegetariano", "Ovovegetariano", "vegano", "celíaco" });
-            cbCondicionEmpresa.Location = new Point(304, 77);
-            cbCondicionEmpresa.Name = "cbCondicionEmpresa";
-            cbCondicionEmpresa.Size = new Size(128, 23);
-            cbCondicionEmpresa.TabIndex = 52;
+            CondicionClinica.DropDownStyle = ComboBoxStyle.DropDownList;
+            CondicionClinica.FormattingEnabled = true;
+            CondicionClinica.Items.AddRange(new object[] { "vegetariano", "Ovolácteovegetariano", "Ovovegetariano", "vegano", "celíaco" });
+            CondicionClinica.Location = new Point(304, 77);
+            CondicionClinica.Name = "CondicionClinica";
+            CondicionClinica.Size = new Size(128, 23);
+            CondicionClinica.TabIndex = 52;
             // 
             // label19
             // 
@@ -492,6 +622,7 @@
             txtContraseñaEmpresa.Name = "txtContraseñaEmpresa";
             txtContraseñaEmpresa.Size = new Size(100, 23);
             txtContraseñaEmpresa.TabIndex = 50;
+            txtContraseñaEmpresa.KeyPress += txtContraseñaEmpresa_KeyPress;
             // 
             // label15
             // 
@@ -594,7 +725,7 @@
             // rbClienteEmpresa
             // 
             rbClienteEmpresa.AutoSize = true;
-            rbClienteEmpresa.Location = new Point(502, 73);
+            rbClienteEmpresa.Location = new Point(503, 47);
             rbClienteEmpresa.Name = "rbClienteEmpresa";
             rbClienteEmpresa.Size = new Size(110, 19);
             rbClienteEmpresa.TabIndex = 5;
@@ -615,29 +746,494 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(395, 55);
+            label4.Location = new Point(396, 29);
             label4.Name = "label4";
             label4.Size = new Size(153, 15);
             label4.TabIndex = 9;
             label4.Text = "SELECCIONE UNA OPCION:";
             // 
-            // pcbZona
+            // pcbZona1
             // 
-            pcbZona.Location = new Point(12, 356);
-            pcbZona.Name = "pcbZona";
-            pcbZona.Size = new Size(235, 227);
-            pcbZona.TabIndex = 10;
-            pcbZona.TabStop = false;
+            pcbZona1.Image = Properties.Resources.Zona1;
+            pcbZona1.Location = new Point(12, 72);
+            pcbZona1.Name = "pcbZona1";
+            pcbZona1.Size = new Size(393, 469);
+            pcbZona1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona1.TabIndex = 10;
+            pcbZona1.TabStop = false;
+            pcbZona1.Visible = false;
             // 
             // label25
             // 
             label25.AutoSize = true;
             label25.ForeColor = SystemColors.ButtonFace;
-            label25.Location = new Point(12, 331);
+            label25.Location = new Point(177, 54);
             label25.Name = "label25";
             label25.Size = new Size(39, 15);
             label25.TabIndex = 61;
             label25.Text = "Zonas";
+            // 
+            // pcbZona2
+            // 
+            pcbZona2.Image = Properties.Resources.Zona2;
+            pcbZona2.Location = new Point(12, 72);
+            pcbZona2.Name = "pcbZona2";
+            pcbZona2.Size = new Size(393, 469);
+            pcbZona2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona2.TabIndex = 62;
+            pcbZona2.TabStop = false;
+            pcbZona2.Visible = false;
+            // 
+            // pcbZona3
+            // 
+            pcbZona3.Image = Properties.Resources.Zona3;
+            pcbZona3.Location = new Point(12, 72);
+            pcbZona3.Name = "pcbZona3";
+            pcbZona3.Size = new Size(393, 469);
+            pcbZona3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona3.TabIndex = 63;
+            pcbZona3.TabStop = false;
+            pcbZona3.Visible = false;
+            // 
+            // pcbZona4
+            // 
+            pcbZona4.Image = Properties.Resources.Zona4;
+            pcbZona4.Location = new Point(12, 72);
+            pcbZona4.Name = "pcbZona4";
+            pcbZona4.Size = new Size(393, 469);
+            pcbZona4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona4.TabIndex = 64;
+            pcbZona4.TabStop = false;
+            pcbZona4.Visible = false;
+            // 
+            // pcbZona5
+            // 
+            pcbZona5.Image = Properties.Resources.Zona5;
+            pcbZona5.Location = new Point(12, 72);
+            pcbZona5.Name = "pcbZona5";
+            pcbZona5.Size = new Size(393, 469);
+            pcbZona5.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona5.TabIndex = 65;
+            pcbZona5.TabStop = false;
+            pcbZona5.Visible = false;
+            // 
+            // pcbZona6
+            // 
+            pcbZona6.Image = Properties.Resources.Zona6;
+            pcbZona6.Location = new Point(12, 72);
+            pcbZona6.Name = "pcbZona6";
+            pcbZona6.Size = new Size(393, 469);
+            pcbZona6.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona6.TabIndex = 66;
+            pcbZona6.TabStop = false;
+            pcbZona6.Visible = false;
+            // 
+            // pcbZona7
+            // 
+            pcbZona7.Image = Properties.Resources.Zona7;
+            pcbZona7.Location = new Point(12, 72);
+            pcbZona7.Name = "pcbZona7";
+            pcbZona7.Size = new Size(393, 469);
+            pcbZona7.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona7.TabIndex = 67;
+            pcbZona7.TabStop = false;
+            pcbZona7.Visible = false;
+            // 
+            // pcbZona8
+            // 
+            pcbZona8.Image = Properties.Resources.Zona8;
+            pcbZona8.Location = new Point(12, 72);
+            pcbZona8.Name = "pcbZona8";
+            pcbZona8.Size = new Size(393, 469);
+            pcbZona8.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona8.TabIndex = 68;
+            pcbZona8.TabStop = false;
+            pcbZona8.Visible = false;
+            // 
+            // pcbZona9
+            // 
+            pcbZona9.Image = Properties.Resources.Zona9;
+            pcbZona9.Location = new Point(12, 72);
+            pcbZona9.Name = "pcbZona9";
+            pcbZona9.Size = new Size(393, 469);
+            pcbZona9.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona9.TabIndex = 69;
+            pcbZona9.TabStop = false;
+            pcbZona9.Visible = false;
+            // 
+            // pcbZona10
+            // 
+            pcbZona10.Image = Properties.Resources.Zona10;
+            pcbZona10.Location = new Point(12, 72);
+            pcbZona10.Name = "pcbZona10";
+            pcbZona10.Size = new Size(393, 469);
+            pcbZona10.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona10.TabIndex = 70;
+            pcbZona10.TabStop = false;
+            pcbZona10.Visible = false;
+            // 
+            // pcbZona11
+            // 
+            pcbZona11.Image = Properties.Resources.Zona11;
+            pcbZona11.Location = new Point(12, 72);
+            pcbZona11.Name = "pcbZona11";
+            pcbZona11.Size = new Size(393, 469);
+            pcbZona11.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona11.TabIndex = 71;
+            pcbZona11.TabStop = false;
+            pcbZona11.Visible = false;
+            // 
+            // pcbZona12
+            // 
+            pcbZona12.Image = Properties.Resources.Zona12;
+            pcbZona12.Location = new Point(12, 72);
+            pcbZona12.Name = "pcbZona12";
+            pcbZona12.Size = new Size(393, 469);
+            pcbZona12.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona12.TabIndex = 72;
+            pcbZona12.TabStop = false;
+            pcbZona12.Visible = false;
+            // 
+            // pcbZona13
+            // 
+            pcbZona13.Image = Properties.Resources.Zona13;
+            pcbZona13.Location = new Point(12, 72);
+            pcbZona13.Name = "pcbZona13";
+            pcbZona13.Size = new Size(393, 469);
+            pcbZona13.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona13.TabIndex = 73;
+            pcbZona13.TabStop = false;
+            pcbZona13.Visible = false;
+            // 
+            // pcbZona14
+            // 
+            pcbZona14.Image = Properties.Resources.Zona14;
+            pcbZona14.Location = new Point(12, 72);
+            pcbZona14.Name = "pcbZona14";
+            pcbZona14.Size = new Size(393, 469);
+            pcbZona14.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona14.TabIndex = 74;
+            pcbZona14.TabStop = false;
+            pcbZona14.Visible = false;
+            // 
+            // pcbZona15
+            // 
+            pcbZona15.Image = Properties.Resources.Zona15;
+            pcbZona15.Location = new Point(12, 72);
+            pcbZona15.Name = "pcbZona15";
+            pcbZona15.Size = new Size(393, 469);
+            pcbZona15.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona15.TabIndex = 75;
+            pcbZona15.TabStop = false;
+            pcbZona15.Visible = false;
+            // 
+            // pcbZona16
+            // 
+            pcbZona16.Image = Properties.Resources.Zona16;
+            pcbZona16.Location = new Point(12, 72);
+            pcbZona16.Name = "pcbZona16";
+            pcbZona16.Size = new Size(393, 469);
+            pcbZona16.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona16.TabIndex = 76;
+            pcbZona16.TabStop = false;
+            pcbZona16.Visible = false;
+            // 
+            // pcbZona17
+            // 
+            pcbZona17.Image = Properties.Resources.Zona17;
+            pcbZona17.Location = new Point(12, 72);
+            pcbZona17.Name = "pcbZona17";
+            pcbZona17.Size = new Size(393, 469);
+            pcbZona17.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona17.TabIndex = 77;
+            pcbZona17.TabStop = false;
+            pcbZona17.Visible = false;
+            // 
+            // pcbZona18
+            // 
+            pcbZona18.Image = Properties.Resources.Zona18;
+            pcbZona18.Location = new Point(12, 72);
+            pcbZona18.Name = "pcbZona18";
+            pcbZona18.Size = new Size(393, 469);
+            pcbZona18.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona18.TabIndex = 78;
+            pcbZona18.TabStop = false;
+            pcbZona18.Visible = false;
+            // 
+            // pcbZona19
+            // 
+            pcbZona19.Image = Properties.Resources.Zona19;
+            pcbZona19.Location = new Point(12, 72);
+            pcbZona19.Name = "pcbZona19";
+            pcbZona19.Size = new Size(393, 469);
+            pcbZona19.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona19.TabIndex = 79;
+            pcbZona19.TabStop = false;
+            pcbZona19.Visible = false;
+            // 
+            // pcbZona20
+            // 
+            pcbZona20.Image = Properties.Resources.Zona20;
+            pcbZona20.Location = new Point(12, 72);
+            pcbZona20.Name = "pcbZona20";
+            pcbZona20.Size = new Size(393, 469);
+            pcbZona20.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona20.TabIndex = 80;
+            pcbZona20.TabStop = false;
+            pcbZona20.Visible = false;
+            // 
+            // pcbZona21
+            // 
+            pcbZona21.Image = Properties.Resources.Zona21;
+            pcbZona21.Location = new Point(12, 72);
+            pcbZona21.Name = "pcbZona21";
+            pcbZona21.Size = new Size(393, 469);
+            pcbZona21.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona21.TabIndex = 81;
+            pcbZona21.TabStop = false;
+            pcbZona21.Visible = false;
+            // 
+            // pcbZona22
+            // 
+            pcbZona22.Image = Properties.Resources.Zona22;
+            pcbZona22.Location = new Point(12, 72);
+            pcbZona22.Name = "pcbZona22";
+            pcbZona22.Size = new Size(393, 469);
+            pcbZona22.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona22.TabIndex = 82;
+            pcbZona22.TabStop = false;
+            pcbZona22.Visible = false;
+            // 
+            // pcbZona23
+            // 
+            pcbZona23.Image = Properties.Resources.Zona23;
+            pcbZona23.Location = new Point(12, 72);
+            pcbZona23.Name = "pcbZona23";
+            pcbZona23.Size = new Size(393, 469);
+            pcbZona23.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona23.TabIndex = 83;
+            pcbZona23.TabStop = false;
+            pcbZona23.Visible = false;
+            // 
+            // pcbZona24
+            // 
+            pcbZona24.Image = Properties.Resources.Zona24;
+            pcbZona24.Location = new Point(12, 72);
+            pcbZona24.Name = "pcbZona24";
+            pcbZona24.Size = new Size(393, 469);
+            pcbZona24.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona24.TabIndex = 84;
+            pcbZona24.TabStop = false;
+            pcbZona24.Visible = false;
+            // 
+            // pcbZona25
+            // 
+            pcbZona25.Image = Properties.Resources.Zona25;
+            pcbZona25.Location = new Point(12, 72);
+            pcbZona25.Name = "pcbZona25";
+            pcbZona25.Size = new Size(393, 469);
+            pcbZona25.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona25.TabIndex = 85;
+            pcbZona25.TabStop = false;
+            pcbZona25.Visible = false;
+            // 
+            // pcbZona26
+            // 
+            pcbZona26.Image = Properties.Resources.Zona26;
+            pcbZona26.Location = new Point(12, 72);
+            pcbZona26.Name = "pcbZona26";
+            pcbZona26.Size = new Size(393, 469);
+            pcbZona26.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona26.TabIndex = 86;
+            pcbZona26.TabStop = false;
+            pcbZona26.Visible = false;
+            // 
+            // pcbZona27
+            // 
+            pcbZona27.Image = Properties.Resources.Zona27;
+            pcbZona27.Location = new Point(12, 72);
+            pcbZona27.Name = "pcbZona27";
+            pcbZona27.Size = new Size(393, 469);
+            pcbZona27.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona27.TabIndex = 87;
+            pcbZona27.TabStop = false;
+            pcbZona27.Visible = false;
+            // 
+            // pcbZona28
+            // 
+            pcbZona28.Image = Properties.Resources.Zona28;
+            pcbZona28.Location = new Point(12, 72);
+            pcbZona28.Name = "pcbZona28";
+            pcbZona28.Size = new Size(393, 469);
+            pcbZona28.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona28.TabIndex = 88;
+            pcbZona28.TabStop = false;
+            pcbZona28.Visible = false;
+            // 
+            // pcbZona29
+            // 
+            pcbZona29.Image = Properties.Resources.Zona29;
+            pcbZona29.Location = new Point(12, 72);
+            pcbZona29.Name = "pcbZona29";
+            pcbZona29.Size = new Size(393, 469);
+            pcbZona29.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona29.TabIndex = 89;
+            pcbZona29.TabStop = false;
+            pcbZona29.Visible = false;
+            // 
+            // pcbZona30
+            // 
+            pcbZona30.Image = Properties.Resources.Zona30;
+            pcbZona30.Location = new Point(12, 72);
+            pcbZona30.Name = "pcbZona30";
+            pcbZona30.Size = new Size(393, 469);
+            pcbZona30.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona30.TabIndex = 90;
+            pcbZona30.TabStop = false;
+            pcbZona30.Visible = false;
+            // 
+            // pcbZona31
+            // 
+            pcbZona31.Image = Properties.Resources.Zona31;
+            pcbZona31.Location = new Point(12, 72);
+            pcbZona31.Name = "pcbZona31";
+            pcbZona31.Size = new Size(393, 469);
+            pcbZona31.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona31.TabIndex = 91;
+            pcbZona31.TabStop = false;
+            pcbZona31.Visible = false;
+            // 
+            // pcbZona32
+            // 
+            pcbZona32.Image = Properties.Resources.Zona32;
+            pcbZona32.Location = new Point(12, 72);
+            pcbZona32.Name = "pcbZona32";
+            pcbZona32.Size = new Size(393, 469);
+            pcbZona32.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona32.TabIndex = 92;
+            pcbZona32.TabStop = false;
+            pcbZona32.Visible = false;
+            // 
+            // pcbZona33
+            // 
+            pcbZona33.Image = Properties.Resources.Zona33;
+            pcbZona33.Location = new Point(12, 72);
+            pcbZona33.Name = "pcbZona33";
+            pcbZona33.Size = new Size(393, 469);
+            pcbZona33.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona33.TabIndex = 93;
+            pcbZona33.TabStop = false;
+            pcbZona33.Visible = false;
+            // 
+            // pcbZona34
+            // 
+            pcbZona34.Image = Properties.Resources.Zona34;
+            pcbZona34.Location = new Point(12, 72);
+            pcbZona34.Name = "pcbZona34";
+            pcbZona34.Size = new Size(393, 469);
+            pcbZona34.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona34.TabIndex = 94;
+            pcbZona34.TabStop = false;
+            pcbZona34.Visible = false;
+            // 
+            // pcbZona35
+            // 
+            pcbZona35.Image = Properties.Resources.Zona35;
+            pcbZona35.Location = new Point(12, 72);
+            pcbZona35.Name = "pcbZona35";
+            pcbZona35.Size = new Size(393, 469);
+            pcbZona35.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona35.TabIndex = 95;
+            pcbZona35.TabStop = false;
+            pcbZona35.Visible = false;
+            // 
+            // pcbZona36
+            // 
+            pcbZona36.Image = Properties.Resources.Zona36;
+            pcbZona36.Location = new Point(12, 72);
+            pcbZona36.Name = "pcbZona36";
+            pcbZona36.Size = new Size(393, 469);
+            pcbZona36.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona36.TabIndex = 96;
+            pcbZona36.TabStop = false;
+            pcbZona36.Visible = false;
+            // 
+            // pcbZona37
+            // 
+            pcbZona37.Image = Properties.Resources.Zona37;
+            pcbZona37.Location = new Point(12, 72);
+            pcbZona37.Name = "pcbZona37";
+            pcbZona37.Size = new Size(393, 469);
+            pcbZona37.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona37.TabIndex = 97;
+            pcbZona37.TabStop = false;
+            pcbZona37.Visible = false;
+            // 
+            // pcbZona38
+            // 
+            pcbZona38.Image = Properties.Resources.Zona38;
+            pcbZona38.Location = new Point(12, 72);
+            pcbZona38.Name = "pcbZona38";
+            pcbZona38.Size = new Size(393, 469);
+            pcbZona38.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona38.TabIndex = 98;
+            pcbZona38.TabStop = false;
+            pcbZona38.Visible = false;
+            // 
+            // pcbZona39
+            // 
+            pcbZona39.Image = Properties.Resources.Zona39;
+            pcbZona39.Location = new Point(12, 72);
+            pcbZona39.Name = "pcbZona39";
+            pcbZona39.Size = new Size(393, 469);
+            pcbZona39.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona39.TabIndex = 99;
+            pcbZona39.TabStop = false;
+            pcbZona39.Visible = false;
+            // 
+            // pcbZona40
+            // 
+            pcbZona40.Image = Properties.Resources.Zona40;
+            pcbZona40.Location = new Point(12, 72);
+            pcbZona40.Name = "pcbZona40";
+            pcbZona40.Size = new Size(393, 469);
+            pcbZona40.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona40.TabIndex = 100;
+            pcbZona40.TabStop = false;
+            pcbZona40.Visible = false;
+            // 
+            // pcbZona41
+            // 
+            pcbZona41.Image = Properties.Resources.Zona41;
+            pcbZona41.Location = new Point(12, 72);
+            pcbZona41.Name = "pcbZona41";
+            pcbZona41.Size = new Size(393, 469);
+            pcbZona41.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona41.TabIndex = 101;
+            pcbZona41.TabStop = false;
+            pcbZona41.Visible = false;
+            // 
+            // pcbZona42
+            // 
+            pcbZona42.Image = Properties.Resources.Zona42;
+            pcbZona42.Location = new Point(12, 72);
+            pcbZona42.Name = "pcbZona42";
+            pcbZona42.Size = new Size(393, 469);
+            pcbZona42.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona42.TabIndex = 102;
+            pcbZona42.TabStop = false;
+            pcbZona42.Visible = false;
+            // 
+            // pcbZona43
+            // 
+            pcbZona43.Image = Properties.Resources.Zona43;
+            pcbZona43.Location = new Point(12, 72);
+            pcbZona43.Name = "pcbZona43";
+            pcbZona43.Size = new Size(393, 469);
+            pcbZona43.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbZona43.TabIndex = 103;
+            pcbZona43.TabStop = false;
+            pcbZona43.Visible = false;
             // 
             // FormAltaCliente
             // 
@@ -645,8 +1241,50 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(66, 125, 125);
             ClientSize = new Size(924, 595);
+            Controls.Add(pcbZona43);
+            Controls.Add(pcbZona42);
+            Controls.Add(pcbZona41);
+            Controls.Add(pcbZona40);
+            Controls.Add(pcbZona39);
+            Controls.Add(pcbZona38);
+            Controls.Add(pcbZona37);
+            Controls.Add(pcbZona36);
+            Controls.Add(pcbZona35);
+            Controls.Add(pcbZona34);
+            Controls.Add(pcbZona33);
+            Controls.Add(pcbZona32);
+            Controls.Add(pcbZona31);
+            Controls.Add(pcbZona30);
+            Controls.Add(pcbZona29);
+            Controls.Add(pcbZona28);
+            Controls.Add(pcbZona27);
+            Controls.Add(pcbZona26);
+            Controls.Add(pcbZona25);
+            Controls.Add(pcbZona24);
+            Controls.Add(pcbZona23);
+            Controls.Add(pcbZona22);
+            Controls.Add(pcbZona21);
+            Controls.Add(pcbZona20);
+            Controls.Add(pcbZona19);
+            Controls.Add(pcbZona18);
+            Controls.Add(pcbZona17);
+            Controls.Add(pcbZona16);
+            Controls.Add(pcbZona15);
+            Controls.Add(pcbZona14);
+            Controls.Add(pcbZona13);
+            Controls.Add(pcbZona12);
+            Controls.Add(pcbZona11);
+            Controls.Add(pcbZona10);
+            Controls.Add(pcbZona9);
+            Controls.Add(pcbZona8);
+            Controls.Add(pcbZona7);
+            Controls.Add(pcbZona6);
+            Controls.Add(pcbZona5);
+            Controls.Add(pcbZona4);
+            Controls.Add(pcbZona3);
+            Controls.Add(pcbZona2);
             Controls.Add(label25);
-            Controls.Add(pcbZona);
+            Controls.Add(pcbZona1);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(gbClienteEmpresa);
@@ -659,7 +1297,49 @@
             gbClienteComun.PerformLayout();
             gbClienteEmpresa.ResumeLayout(false);
             gbClienteEmpresa.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pcbZona).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona8).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona9).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona10).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona11).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona12).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona13).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona14).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona15).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona16).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona17).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona18).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona19).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona20).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona21).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona22).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona23).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona24).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona25).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona26).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona27).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona28).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona29).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona30).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona31).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona32).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona33).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona34).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona35).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona36).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona37).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona38).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona39).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona40).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona41).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona42).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcbZona43).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -713,7 +1393,7 @@
         private Label label10;
         private Label label15;
         private ComboBox cbCondicionComun;
-        private ComboBox cbCondicionEmpresa;
+        private ComboBox CondicionClinica;
         private TextBox txtTelefonoComun;
         private Label label20;
         private TextBox txtTelefonoEmpresa;
@@ -724,7 +1404,53 @@
         private Label label23;
         private TextBox txtBarrioEmpresa;
         private Label label24;
-        private PictureBox pcbZona;
+        private PictureBox pcbZona1;
         private Label label25;
+        private PictureBox pcbZona2;
+        private PictureBox pcbZona3;
+        private PictureBox pcbZona4;
+        private PictureBox pcbZona5;
+        private PictureBox pcbZona6;
+        private PictureBox pcbZona7;
+        private PictureBox pcbZona8;
+        private PictureBox pcbZona9;
+        private PictureBox pcbZona10;
+        private PictureBox pcbZona11;
+        private PictureBox pcbZona12;
+        private PictureBox pcbZona13;
+        private PictureBox pcbZona14;
+        private PictureBox pcbZona15;
+        private PictureBox pcbZona16;
+        private PictureBox pcbZona17;
+        private PictureBox pcbZona18;
+        private PictureBox pcbZona19;
+        private PictureBox pcbZona20;
+        private PictureBox pcbZona21;
+        private PictureBox pcbZona22;
+        private PictureBox pcbZona23;
+        private PictureBox pcbZona24;
+        private PictureBox pcbZona25;
+        private PictureBox pcbZona26;
+        private PictureBox pcbZona27;
+        private PictureBox pcbZona28;
+        private PictureBox pcbZona29;
+        private PictureBox pcbZona30;
+        private PictureBox pcbZona31;
+        private PictureBox pcbZona32;
+        private PictureBox pcbZona33;
+        private PictureBox pcbZona34;
+        private PictureBox pcbZona35;
+        private PictureBox pcbZona36;
+        private PictureBox pcbZona37;
+        private PictureBox pcbZona38;
+        private PictureBox pcbZona39;
+        private PictureBox pcbZona40;
+        private PictureBox pcbZona41;
+        private PictureBox pcbZona42;
+        private PictureBox pcbZona43;
+        private ComboBox comboBox1;
+        private Label label26;
+        private ComboBox comboBox2;
+        private Label label27;
     }
 }
