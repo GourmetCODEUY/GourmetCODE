@@ -9,11 +9,12 @@ namespace proyecto.Logica
     public class ClienteManager
     {
         private readonly ClienteRepository clienteRepository;
-
+        private int idDepartamento;
         public ClienteManager()
         {
             clienteRepository = new ClienteRepository();
         }
+        
         public List<string> ObtenerDepartamentosDesdeBD()
         {
             try
@@ -111,7 +112,7 @@ namespace proyecto.Logica
             }
             catch (Exception ex)
             {
-                MessageBox.Show("La zona seleccionada (" + zonaEmpresa + ") no es válida para el departamento " + departamentoEmpresa + ex.Message + ex + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + ex + MessageBoxButtons.OK + MessageBoxIcon.Error);
 
             }
         }

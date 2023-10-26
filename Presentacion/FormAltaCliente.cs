@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using proyecto.Logica;
-using proyecto.Persistencia;
+﻿using proyecto.Logica;
 
 namespace proyecto.Presentacion
 {
@@ -27,7 +16,7 @@ namespace proyecto.Presentacion
 
 
             CargarDepartamentosDesdeBD();
-            
+
 
             //APLICAR LIMITES A LOS CAMPOS DE TEXTO EMPRESA:
             txtCalleEmpresa.MaxLength = 20;
@@ -100,9 +89,6 @@ namespace proyecto.Presentacion
 
                 // Agrega los departamentos al ComboBox
                 cmbDepartamentosEmpresa.Items.AddRange(departamentos.ToArray());
-
-                // Opcional: Selecciona un departamento por defecto si es necesario
-                // cmbDepartamentosEmpresa.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -126,7 +112,6 @@ namespace proyecto.Presentacion
             try
             {
                 // Código para insertar cliente común
-
                 string ciClienteComun = txtDocumento.Text;
                 string primerNombre = txtPrimerNombre.Text;
                 string segundoNombre = txtSegundoNombre.Text;
@@ -161,7 +146,7 @@ namespace proyecto.Presentacion
                 string departamentoEmpresa = cmbDepartamentosEmpresa.SelectedItem as string;
                 string zonaEmpresa = cmbZonasEmpresa.SelectedItem as string;
                 string condicionClinica = CondicionClinica.SelectedItem as string; // Obtener el valor seleccionado del ComboBox
-                int ID_Sucursal= 0;
+                int ID_Sucursal = 0;
                 // Llama al método para insertar un cliente de empresa
                 clienteManager.InsertarClienteEmpresa(ID_Sucursal, rut, nomEmpresa, usuarioLoginEmpresa, contraseñaLoginEmpresa, telefonoEmpresa, calleEmpresa, puertaEmpresa, zonaEmpresa, departamentoEmpresa, condicionClinica);
 

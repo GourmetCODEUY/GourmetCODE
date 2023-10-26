@@ -30,9 +30,9 @@
         {
             rbClienteComun = new RadioButton();
             gbClienteComun = new GroupBox();
-            comboBox1 = new ComboBox();
+            cmbZonaComun = new ComboBox();
             label26 = new Label();
-            comboBox2 = new ComboBox();
+            cmbDepartamentoComun = new ComboBox();
             label27 = new Label();
             txtTelefonoComun = new TextBox();
             label20 = new Label();
@@ -189,9 +189,9 @@
             // 
             // gbClienteComun
             // 
-            gbClienteComun.Controls.Add(comboBox1);
+            gbClienteComun.Controls.Add(cmbZonaComun);
             gbClienteComun.Controls.Add(label26);
-            gbClienteComun.Controls.Add(comboBox2);
+            gbClienteComun.Controls.Add(cmbDepartamentoComun);
             gbClienteComun.Controls.Add(label27);
             gbClienteComun.Controls.Add(txtTelefonoComun);
             gbClienteComun.Controls.Add(label20);
@@ -222,14 +222,14 @@
             gbClienteComun.TabIndex = 4;
             gbClienteComun.TabStop = false;
             // 
-            // comboBox1
+            // cmbZonaComun
             // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(125, 223);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 62;
+            cmbZonaComun.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbZonaComun.FormattingEnabled = true;
+            cmbZonaComun.Location = new Point(125, 223);
+            cmbZonaComun.Name = "cmbZonaComun";
+            cmbZonaComun.Size = new Size(121, 23);
+            cmbZonaComun.TabIndex = 62;
             // 
             // label26
             // 
@@ -241,14 +241,14 @@
             label26.TabIndex = 61;
             label26.Text = "Zonas";
             // 
-            // comboBox2
+            // cmbDepartamentoComun
             // 
-            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(125, 191);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(121, 23);
-            comboBox2.TabIndex = 60;
+            cmbDepartamentoComun.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbDepartamentoComun.FormattingEnabled = true;
+            cmbDepartamentoComun.Location = new Point(125, 191);
+            cmbDepartamentoComun.Name = "cmbDepartamentoComun";
+            cmbDepartamentoComun.Size = new Size(121, 23);
+            cmbDepartamentoComun.TabIndex = 60;
             // 
             // label27
             // 
@@ -1448,9 +1448,9 @@
         private PictureBox pcbZona41;
         private PictureBox pcbZona42;
         private PictureBox pcbZona43;
-        private ComboBox comboBox1;
+        private ComboBox cmbZonaComun;
         private Label label26;
-        private ComboBox comboBox2;
+        private ComboBox cmbDepartamentoComun;
         private Label label27;
     }
 }

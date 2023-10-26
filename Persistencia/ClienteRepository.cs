@@ -47,20 +47,44 @@ namespace proyecto.Persistencia
         public string Zona { get; set; } 
         public string Departamento { get; set; }
         public int ID_Sucursal { get; set; }
+
+        public int idDepartamento { get; set; }
     }
 
     public class ClienteRepository
     {
+        public List<string> ObtenerZonasPorDepartamentoDesdeBD(string nombreDepartamento)
+        {
+            List<string> zonas = new List<string>();
+
+            using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
+            {
+                conexion.Open();
+                string consulta = "SELECT Num_Zona FROM divide WHERE ID_Departamento = @IDDepartamento";
+                MySqlCommand cmd = new MySqlCommand(consulta, conexion);
+                cmd.Parameters.AddWithValue("@IDDepartamento", ObtenerIDDepartamentoPorNombre(nombreDepartamento));
+                MessageBox.Show("Se pudo encontrar " + ObtenerIDDepartamentoPorNombre);
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string zona = reader["Num_Zona"].ToString();
+                        zonas.Add(zona);
+                    }
+                }
+            }
+            return zonas;
+        }
 
         private readonly string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionSQL"].ConnectionString;
-        public int ObtenerIDDepartamentoPorNombre(string nombreDepartamento)
+        public int ObtenerIDDepartamentoPorNombre(string departamentoEmpresa)
         {
             using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
             {
                 conexion.Open();
                 string consulta = "SELECT ID_Departamento FROM departamento WHERE Nombre = @NombreDepartamento";
                 MySqlCommand cmd = new MySqlCommand(consulta, conexion);
-                cmd.Parameters.AddWithValue("@NombreDepartamento", nombreDepartamento);
+                cmd.Parameters.AddWithValue("@NombreDepartamento", departamentoEmpresa);
                 object result = cmd.ExecuteScalar();
                 if (result != null)
                 {
@@ -91,29 +115,7 @@ namespace proyecto.Persistencia
 
             return departamentos;
         }
-        public List<string> ObtenerZonasPorDepartamentoDesdeBD(string nombreDepartamento)
-        {
-            List<string> zonas = new List<string>();
-
-            using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
-            {
-                conexion.Open();
-                string consulta = "SELECT Num_Zona FROM divide WHERE ID_Departamento = @IDDepartamento";
-                MySqlCommand cmd = new MySqlCommand(consulta, conexion);
-                cmd.Parameters.AddWithValue("@IDDepartamento", ObtenerIDDepartamentoPorNombre(nombreDepartamento));
-
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        string zona = reader["Num_Zona"].ToString();
-                        zonas.Add(zona);
-                    }
-                }
-            }
-
-            return zonas;
-        }
+       
 
         // Inserción de cliente común
         public void InsertarClienteComun(ClienteComun clienteComun)
@@ -213,23 +215,6 @@ namespace proyecto.Persistencia
                         ultimoIDCliente = (ulong)cmdUltimoIDCliente.ExecuteScalar();
                     }
 
-                    using (MySqlCommand cmdEmpresaSucursal = conexion.CreateCommand())
-                    {
-                        try
-                        {
-                            string consultaEmpresaSucursal = "INSERT INTO sucursal (ID_Sucursal) " +
-                                "VALUES (@ID_Sucursal)";
-                            cmdEmpresaSucursal.CommandText = consultaEmpresaSucursal;
-                            cmdEmpresaSucursal.Parameters.AddWithValue("@ID_Sucursal", null);
-                            cmdEmpresaSucursal.ExecuteNonQuery();
-                        }
-                        catch (Exception ex)
-                        {
-                            throw new Exception("Error al insertar en la tabla sucursal: " + ex.Message, ex);
-                        }
-                    }
-
-
                     using (MySqlCommand cmdEmpresaReside = conexion.CreateCommand())
                     {
                         try
@@ -238,7 +223,7 @@ namespace proyecto.Persistencia
                                 "VALUES (@Num_Cliente, @ID_Sucursal)";
                             cmdEmpresaReside.CommandText = consultaEmpresa;
                             cmdEmpresaReside.Parameters.AddWithValue("@Num_Cliente", Convert.ToInt64(ultimoIDCliente)); // Convertir a Int64
-                            cmdEmpresaReside.Parameters.AddWithValue("@ID_Sucursal", ObtenerIDDepartamentoPorNombre);
+                            cmdEmpresaReside.Parameters.AddWithValue("@ID_Sucursal", ObtenerIDDepartamentoPorNombre(clienteEmpresa.Departamento));
                             cmdEmpresaReside.ExecuteNonQuery();
                         }
                         catch (Exception ex)
