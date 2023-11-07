@@ -17,7 +17,6 @@ namespace proyecto.Presentacion
 
             CargarDepartamentosDesdeBD();
 
-
             //APLICAR LIMITES A LOS CAMPOS DE TEXTO EMPRESA:
             txtCalleEmpresa.MaxLength = 20;
             txtContraseñaEmpresa.MaxLength = 20;
@@ -257,7 +256,7 @@ namespace proyecto.Presentacion
             string selectedZona = cmbZonasEmpresa.SelectedItem.ToString();
             int zonaNumber;
 
-            // Intenta extraer el número de la opción seleccionada
+            // Extrae el número de la opción seleccionada
             if (int.TryParse(selectedZona.Replace("Zona", ""), out zonaNumber))
             {
                 // Oculta todos los PictureBox
