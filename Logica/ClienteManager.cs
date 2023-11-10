@@ -1,20 +1,99 @@
 ﻿using proyecto.Persistencia;
+using Proyecto.Persistencia;
 using System;
 using System.Data;
 using System.Linq;
 using System.Security.Policy;
+using static proyecto.Persistencia.BuscarCliente;
 
 namespace proyecto.Logica
 {
+
     public class ClienteManager
     {
+        private readonly ModificarClientesP _clientePersistencia = new ModificarClientesP();
+        private BuscarCliente buscarCliente;
         private readonly ClienteRepository clienteRepository;
         private int idDepartamento;
+
         public ClienteManager()
         {
+          
+            buscarCliente = new BuscarCliente();
             clienteRepository = new ClienteRepository();
         }
-        
+
+        public void ActualizarClientesComunes(DataTable tablaClientesComunes)
+        {
+            try
+            {
+                _clientePersistencia.ActualizarClientesComunes(tablaClientesComunes);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al actualizar clientes comunes: {ex.Message}", ex);
+            }
+        }
+
+        public void ActualizarClientesEmpresas(DataTable tablaClientesEmpresas)
+        {
+            try
+            {
+                _clientePersistencia.ActualizarClientesEmpresas(tablaClientesEmpresas);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al actualizar clientes de empresas: {ex.Message}", ex);
+            }
+        }
+        public DataTable ObtenerClientesComunes()
+        {
+            try
+            {
+                // Llama al método en la capa de persistencia para obtener los clientes comunes
+                return _clientePersistencia.ObtenerClientesComunes();
+            }
+            catch (Exception ex)
+            {
+                // Maneja la excepción según tus requisitos
+                Console.WriteLine($"Error al obtener clientes comunes: {ex.Message}");
+                return null;
+            }
+        }
+        public DataTable ObtenerClientesEmpresas()
+        {
+            try
+            {
+                // Llama al método en la capa de persistencia para obtener los clientes de empresas
+                return _clientePersistencia.ObtenerClientesEmpresas();
+            }
+            catch (Exception ex)
+            {
+                // Maneja la excepción según tus requisitos
+                Console.WriteLine($"Error al obtener clientes de empresas: {ex.Message}");
+                return null;
+            }
+        }
+
+        public void ActualizarAutorizaciones(List<Cliente> clientesModificados)
+        {
+            try
+            {
+                buscarCliente.ActualizarAutorizaciones(clientesModificados);
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción según tus necesidades
+                throw new Exception("Error en la capa de lógica al actualizar las autorizaciones: " + ex.Message, ex);
+            }
+
+        }
+
+        public List<Cliente> ObtenerTodosLosClientes()
+        {
+            return buscarCliente.ObtenerTodosLosClientesDesdeBD();
+        }
+
         public List<string> ObtenerDepartamentosDesdeBD()
         {
             try
@@ -37,29 +116,51 @@ namespace proyecto.Logica
                 throw new Exception("Error al obtener zonas desde la base de datos: " + ex.Message);
             }
         }
-        public void InsertarClienteComun(string ciClienteComun, string primerNombre, string segundoNombre, string telefonoComun, string primerApellido, string segundoApellido, string calleComun, string puertaComun, string usuarioComun, string contraseñaComun)
+
+        public void InsertarClienteComun(string Departamento_Comun, int ID_SucursalComun, string ciClienteComun, string primerNombre, string primerApellido, string segundoNombre, string segundoApellido, string calleComun, string puertaComun, string zonaComun, string usuarioComun, string telefonoComun, string contraseñaComun, string Condicion_Clinica_Comun)
         {
+            int idDepartamento = clienteRepository.ObtenerIDDepartamentoPorNombre(Departamento_Comun);
+            if (idDepartamento < 0)
+            {
+                MessageBox.Show("El departamento no se encuentra en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
-                ClienteComun nuevoClienteComun = new ClienteComun
+                ClienteComun clienteComun = new ClienteComun
                 {
                     CI_Cliente_Comun = ciClienteComun,
                     Primer_Nombre = primerNombre,
-                    Segundo_Nombre = segundoNombre,
                     Primer_Apellido = primerApellido,
+                    Segundo_Nombre = segundoNombre,
                     Segundo_Apellido = segundoApellido,
+                    Zona_Comun = zonaComun,
                     Calle_Comun = calleComun,
                     Puerta_Comun = puertaComun,
-                    Usuario_Comun = usuarioComun,
+                    UsuarioComun = usuarioComun,
+                    Telefono_Comun = telefonoComun,
+                    Condicion_Clinica_Comun = Condicion_Clinica_Comun,
                     Contraseña_Comun = contraseñaComun,
-                    Telefono_Comun = telefonoComun
-                };
+                    ID_SucursalComun = idDepartamento,
+                    Departamento_Comun = Departamento_Comun,
 
-                clienteRepository.InsertarClienteComun(nuevoClienteComun);
+                };
+                clienteRepository.InsertarClienteComun(clienteComun);
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al insertar el cliente común: " + ex.Message);
+                MessageBox.Show(ex.Message + ex + MessageBoxButtons.OK + MessageBoxIcon.Error);
+
+            }
+
+            try
+            {
+                // Llamar al método de acceso a datos modificado
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al insertar cliente común: " + ex.Message, ex);
             }
         }
 
@@ -72,27 +173,8 @@ namespace proyecto.Logica
                 MessageBox.Show("El departamento no se encuentra en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             try
             {
-                // Realizar validaciones aquí antes de insertar los datos en la base de datos.
-                if (rut.Length > 12 || !EsNumero(rut))
-                {
-                    throw new Exception("El RUT debe ser numérico y no debe ser mayor a 12 caracteres.");
-                }
-                if (!EsTextoValido(nomEmpresa, 20))
-                {
-                    throw new Exception("El nombre de la empresa debe ser un texto de no más de 20 caracteres.");
-                }
-                if (!EsTextoValido(usuarioLoginEmpresa, 20))
-                {
-                    throw new Exception("El usuario de inicio de sesión debe ser un texto de no más de 20 caracteres.");
-                }
-                if (contraseñaLoginEmpresa.Length > 20)
-                {
-                    throw new Exception("La contraseña de inicio de sesión no debe ser mayor a 20 caracteres.");
-                }
-
                 ClienteEmpresa nuevoClienteEmpresa = new ClienteEmpresa
                 {
                     Rut = rut,
@@ -115,16 +197,6 @@ namespace proyecto.Logica
                 MessageBox.Show(ex.Message + ex + MessageBoxButtons.OK + MessageBoxIcon.Error);
 
             }
-        }
-
-        private bool EsTextoValido(string texto, int maxLength)
-        {
-            return !string.IsNullOrEmpty(texto) && texto.Length <= maxLength && !texto.Any(char.IsDigit);
-        }
-
-        private bool EsNumero(string texto)
-        {
-            return long.TryParse(texto, out _);
         }
     } 
 }

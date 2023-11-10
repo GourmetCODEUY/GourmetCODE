@@ -30,12 +30,6 @@
         {
             dgvPedidos = new DataGridView();
             btnConsultarPedido = new Button();
-            ID_Pedido = new DataGridViewTextBoxColumn();
-            Desc_Pedido = new DataGridViewTextBoxColumn();
-            Calle_Cliente = new DataGridViewTextBoxColumn();
-            Puerta_Cliente = new DataGridViewTextBoxColumn();
-            Zona_Cliente = new DataGridViewTextBoxColumn();
-            Barrio_Cliente = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
             SuspendLayout();
             // 
@@ -43,7 +37,6 @@
             // 
             dgvPedidos.BackgroundColor = Color.FromArgb(66, 125, 125);
             dgvPedidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPedidos.Columns.AddRange(new DataGridViewColumn[] { ID_Pedido, Desc_Pedido, Calle_Cliente, Puerta_Cliente, Zona_Cliente, Barrio_Cliente });
             dgvPedidos.Location = new Point(127, 12);
             dgvPedidos.Name = "dgvPedidos";
             dgvPedidos.RowTemplate.Height = 25;
@@ -60,36 +53,6 @@
             btnConsultarPedido.Text = "Pedido";
             btnConsultarPedido.UseVisualStyleBackColor = false;
             btnConsultarPedido.Click += btnConsultarPedido_Click;
-            // 
-            // ID_Pedido
-            // 
-            ID_Pedido.HeaderText = "Id del pedido";
-            ID_Pedido.Name = "ID_Pedido";
-            // 
-            // Desc_Pedido
-            // 
-            Desc_Pedido.HeaderText = "Descripcion del pedido";
-            Desc_Pedido.Name = "Desc_Pedido";
-            // 
-            // Calle_Cliente
-            // 
-            Calle_Cliente.HeaderText = "Calle del cliente";
-            Calle_Cliente.Name = "Calle_Cliente";
-            // 
-            // Puerta_Cliente
-            // 
-            Puerta_Cliente.HeaderText = "Puerta del cliente";
-            Puerta_Cliente.Name = "Puerta_Cliente";
-            // 
-            // Zona_Cliente
-            // 
-            Zona_Cliente.HeaderText = "Zona del cliente";
-            Zona_Cliente.Name = "Zona_Cliente";
-            // 
-            // Barrio_Cliente
-            // 
-            Barrio_Cliente.HeaderText = "Barrio del Cliente";
-            Barrio_Cliente.Name = "Barrio_Cliente";
             // 
             // FormConsultaPedidos
             // 
@@ -111,11 +74,5 @@
 
         private DataGridView dgvPedidos;
         private Button btnConsultarPedido;
-        private DataGridViewTextBoxColumn ID_Pedido;
-        private DataGridViewTextBoxColumn Desc_Pedido;
-        private DataGridViewTextBoxColumn Calle_Cliente;
-        private DataGridViewTextBoxColumn Puerta_Cliente;
-        private DataGridViewTextBoxColumn Zona_Cliente;
-        private DataGridViewTextBoxColumn Barrio_Cliente;
     }
 }

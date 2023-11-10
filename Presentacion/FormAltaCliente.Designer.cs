@@ -58,8 +58,6 @@
             txtPrimerNombre = new TextBox();
             btAceptarComun = new Button();
             gbClienteEmpresa = new GroupBox();
-            txtBarrioEmpresa = new TextBox();
-            label24 = new Label();
             cmbZonasEmpresa = new ComboBox();
             label23 = new Label();
             cmbDepartamentosEmpresa = new ComboBox();
@@ -230,6 +228,7 @@
             cmbZonaComun.Name = "cmbZonaComun";
             cmbZonaComun.Size = new Size(121, 23);
             cmbZonaComun.TabIndex = 62;
+            cmbZonaComun.SelectedIndexChanged += cmbZonaComun_SelectedIndexChanged;
             // 
             // label26
             // 
@@ -249,6 +248,7 @@
             cmbDepartamentoComun.Name = "cmbDepartamentoComun";
             cmbDepartamentoComun.Size = new Size(121, 23);
             cmbDepartamentoComun.TabIndex = 60;
+            cmbDepartamentoComun.SelectedIndexChanged += cmbDepartamentoComun_SelectedIndexChanged;
             // 
             // label27
             // 
@@ -266,6 +266,7 @@
             txtTelefonoComun.Name = "txtTelefonoComun";
             txtTelefonoComun.Size = new Size(100, 23);
             txtTelefonoComun.TabIndex = 53;
+            txtTelefonoComun.KeyPress += txtTelefonoComun_KeyPress;
             // 
             // label20
             // 
@@ -280,8 +281,10 @@
             // 
             // cbCondicionComun
             // 
+            cbCondicionComun.DropDownStyle = ComboBoxStyle.DropDownList;
             cbCondicionComun.FormattingEnabled = true;
-            cbCondicionComun.Location = new Point(322, 98);
+            cbCondicionComun.Items.AddRange(new object[] { "vegetariano", "Ovolácteovegetariano", "Ovovegetariano", "vegano", "celíaco" });
+            cbCondicionComun.Location = new Point(326, 74);
             cbCondicionComun.Name = "cbCondicionComun";
             cbCondicionComun.Size = new Size(100, 23);
             cbCondicionComun.TabIndex = 10;
@@ -291,7 +294,7 @@
             label16.AutoSize = true;
             label16.BackColor = Color.Transparent;
             label16.ForeColor = Color.White;
-            label16.Location = new Point(250, 101);
+            label16.Location = new Point(254, 77);
             label16.Name = "label16";
             label16.Size = new Size(62, 15);
             label16.TabIndex = 51;
@@ -299,7 +302,7 @@
             // 
             // txtCalleComun
             // 
-            txtCalleComun.Location = new Point(322, 16);
+            txtCalleComun.Location = new Point(326, 16);
             txtCalleComun.Name = "txtCalleComun";
             txtCalleComun.Size = new Size(100, 23);
             txtCalleComun.TabIndex = 36;
@@ -328,31 +331,32 @@
             // 
             // txtPuertaComun
             // 
-            txtPuertaComun.Location = new Point(322, 45);
+            txtPuertaComun.Location = new Point(326, 45);
             txtPuertaComun.Name = "txtPuertaComun";
             txtPuertaComun.Size = new Size(100, 23);
             txtPuertaComun.TabIndex = 33;
             // 
             // txtContraseñaComun
             // 
-            txtContraseñaComun.Location = new Point(322, 154);
+            txtContraseñaComun.Location = new Point(326, 130);
             txtContraseñaComun.Name = "txtContraseñaComun";
             txtContraseñaComun.Size = new Size(100, 23);
             txtContraseñaComun.TabIndex = 32;
             // 
             // txtUsuarioComun
             // 
-            txtUsuarioComun.Location = new Point(322, 125);
+            txtUsuarioComun.Location = new Point(326, 101);
             txtUsuarioComun.Name = "txtUsuarioComun";
             txtUsuarioComun.Size = new Size(100, 23);
             txtUsuarioComun.TabIndex = 31;
+            txtUsuarioComun.KeyPress += txtUsuarioComun_KeyPress;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(250, 156);
+            label2.Location = new Point(254, 132);
             label2.Name = "label2";
             label2.Size = new Size(67, 15);
             label2.TabIndex = 30;
@@ -363,7 +367,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(250, 128);
+            label1.Location = new Point(269, 106);
             label1.Name = "label1";
             label1.Size = new Size(47, 15);
             label1.TabIndex = 29;
@@ -375,6 +379,7 @@
             txtDocumento.Name = "txtDocumento";
             txtDocumento.Size = new Size(100, 23);
             txtDocumento.TabIndex = 28;
+            txtDocumento.KeyPress += txtDocumento_KeyPress;
             // 
             // txtPrimerApellido
             // 
@@ -382,6 +387,7 @@
             txtPrimerApellido.Name = "txtPrimerApellido";
             txtPrimerApellido.Size = new Size(100, 23);
             txtPrimerApellido.TabIndex = 27;
+            txtPrimerApellido.KeyPress += txtPrimerApellido_KeyPress;
             // 
             // txtSegundoNombre
             // 
@@ -389,6 +395,7 @@
             txtSegundoNombre.Name = "txtSegundoNombre";
             txtSegundoNombre.Size = new Size(100, 23);
             txtSegundoNombre.TabIndex = 26;
+            txtSegundoNombre.KeyPress += txtSegundoNombre_KeyPress;
             // 
             // txtSegundoApellido
             // 
@@ -396,6 +403,7 @@
             txtSegundoApellido.Name = "txtSegundoApellido";
             txtSegundoApellido.Size = new Size(100, 23);
             txtSegundoApellido.TabIndex = 25;
+            txtSegundoApellido.KeyPress += txtSegundoApellido_KeyPress;
             // 
             // label14
             // 
@@ -458,6 +466,7 @@
             txtPrimerNombre.Name = "txtPrimerNombre";
             txtPrimerNombre.Size = new Size(100, 23);
             txtPrimerNombre.TabIndex = 18;
+            txtPrimerNombre.KeyPress += txtPrimerNombre_KeyPress;
             // 
             // btAceptarComun
             // 
@@ -472,8 +481,6 @@
             // 
             // gbClienteEmpresa
             // 
-            gbClienteEmpresa.Controls.Add(txtBarrioEmpresa);
-            gbClienteEmpresa.Controls.Add(label24);
             gbClienteEmpresa.Controls.Add(cmbZonasEmpresa);
             gbClienteEmpresa.Controls.Add(label23);
             gbClienteEmpresa.Controls.Add(cmbDepartamentosEmpresa);
@@ -495,28 +502,11 @@
             gbClienteEmpresa.Controls.Add(label18);
             gbClienteEmpresa.Controls.Add(txtNombreEmpresa);
             gbClienteEmpresa.Controls.Add(btAceptarEmpresa);
-            gbClienteEmpresa.Location = new Point(427, 335);
+            gbClienteEmpresa.Location = new Point(427, 75);
             gbClienteEmpresa.Name = "gbClienteEmpresa";
             gbClienteEmpresa.Size = new Size(485, 248);
             gbClienteEmpresa.TabIndex = 5;
             gbClienteEmpresa.TabStop = false;
-            // 
-            // txtBarrioEmpresa
-            // 
-            txtBarrioEmpresa.Location = new Point(126, 210);
-            txtBarrioEmpresa.Name = "txtBarrioEmpresa";
-            txtBarrioEmpresa.Size = new Size(100, 23);
-            txtBarrioEmpresa.TabIndex = 60;
-            // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.ForeColor = SystemColors.ButtonFace;
-            label24.Location = new Point(11, 218);
-            label24.Name = "label24";
-            label24.Size = new Size(38, 15);
-            label24.TabIndex = 59;
-            label24.Text = "Barrio";
             // 
             // cmbZonasEmpresa
             // 
@@ -1402,8 +1392,6 @@
         private Label label22;
         private ComboBox cmbZonasEmpresa;
         private Label label23;
-        private TextBox txtBarrioEmpresa;
-        private Label label24;
         private PictureBox pcbZona1;
         private Label label25;
         private PictureBox pcbZona2;

@@ -71,24 +71,29 @@ namespace proyecto.Presentacion
 
         private void btnAlta_Click(object sender, EventArgs e)
         {
-            FormAltaCliente formAltaCliente = new FormAltaCliente();
+            FormAutorizacionCliente formAutorizacionCliente = new FormAutorizacionCliente();
 
             // Configurar el formulario secundario para que no tenga borde de formulario propio
-            formAltaCliente.FormBorderStyle = FormBorderStyle.None;
+            formAutorizacionCliente.FormBorderStyle = FormBorderStyle.None;
 
             // Establecer el formulario secundario como hijo del panel11
-            formAltaCliente.TopLevel = false;
+            formAutorizacionCliente.TopLevel = false;
             panel11Reference.Controls.Clear(); // Limpia el panel si ya hay controles en él
-            panel11Reference.Controls.Add(formAltaCliente);
+            panel11Reference.Controls.Add(formAutorizacionCliente);
 
             // Mostrar el formulario dentro del panel11
-            formAltaCliente.Show();
+            formAutorizacionCliente.Show();
 
         }
         public void ActualizarVisibilidadBoton(bool btnRegistroVisible, bool btnAltaVisible)
         {
             btnRegistro.Visible = btnRegistroVisible;
             btnAlta.Visible = btnAltaVisible;
+        }
+
+        private void FormClienteSubMenu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

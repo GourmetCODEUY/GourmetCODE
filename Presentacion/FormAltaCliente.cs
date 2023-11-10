@@ -17,13 +17,13 @@ namespace proyecto.Presentacion
 
             CargarDepartamentosDesdeBD();
 
+
             //APLICAR LIMITES A LOS CAMPOS DE TEXTO EMPRESA:
             txtCalleEmpresa.MaxLength = 20;
             txtContraseñaEmpresa.MaxLength = 20;
             txtNombreEmpresa.MaxLength = 20;
             txtRut.MaxLength = 12;
             txtTelefonoEmpresa.MaxLength = 9;
-            txtBarrioEmpresa.MaxLength = 20;
 
             //PONEMOS TODOS LOS PICTURE BOX EN NO VISIBLE
             pcbZona1.Visible = false;
@@ -70,6 +70,12 @@ namespace proyecto.Presentacion
             pcbZona42.Visible = false;
             pcbZona43.Visible = false;
 
+            // Asociar el evento de selección para el ComboBox de departamentos de Cliente Comun
+            cmbDepartamentoComun.SelectedIndexChanged += cmbDepartamentoComun_SelectedIndexChanged;
+
+            // Asociar el evento de selección para el ComboBox de zonas de Cliente Comun
+            cmbZonaComun.SelectedIndexChanged += cmbZonaComun_SelectedIndexChanged;
+
             // Asociar el evento de selección para el ComboBox de departamentos
             cmbDepartamentosEmpresa.SelectedIndexChanged += cmbDepartamentosEmpresa_SelectedIndexChanged;
 
@@ -82,6 +88,12 @@ namespace proyecto.Presentacion
             {
                 // Llama al método del clienteManager para obtener los departamentos desde la base de datos
                 List<string> departamentos = clienteManager.ObtenerDepartamentosDesdeBD();
+
+                // Limpia cualquier elemento existente en el ComboBox de Cliente Comun
+                cmbDepartamentoComun.Items.Clear();
+
+                // Agrega los departamentos al ComboBox de Cliente Comun
+                cmbDepartamentoComun.Items.AddRange(departamentos.ToArray());
 
                 // Limpia cualquier elemento existente en el ComboBox
                 cmbDepartamentosEmpresa.Items.Clear();
@@ -117,12 +129,31 @@ namespace proyecto.Presentacion
                 string primerApellido = txtPrimerApellido.Text;
                 string segundoApellido = txtSegundoApellido.Text;
                 string calleComun = txtCalleComun.Text;
+                string zonaComun = cmbZonaComun.SelectedItem as string;
                 string puertaComun = txtPuertaComun.Text;
                 string usuarioComun = txtUsuarioComun.Text;
                 string contraseñaComun = txtContraseñaComun.Text;
                 string telefonoComun = txtTelefonoComun.Text;
+                string Condicion_Clinica_Comun = cbCondicionComun.SelectedItem as string;
+                string Departamento_Comun = cmbDepartamentoComun.SelectedItem as string;
+                int ID_SucursalComun = 0;
                 // Llamar al método para insertar un cliente común
-                clienteManager.InsertarClienteComun(ciClienteComun, primerNombre, primerApellido, segundoNombre, segundoApellido, calleComun, puertaComun, usuarioComun, telefonoComun, contraseñaComun);
+                clienteManager.InsertarClienteComun(Departamento_Comun, ID_SucursalComun, ciClienteComun, primerNombre, primerApellido, segundoNombre, segundoApellido, calleComun, puertaComun, zonaComun, usuarioComun, telefonoComun, contraseñaComun, Condicion_Clinica_Comun);
+
+                txtDocumento.Text = "";
+                txtPrimerNombre.Text = "";
+                txtSegundoNombre.Text = "";
+                txtPrimerApellido.Text = "";
+                txtSegundoApellido.Text = "";
+                txtCalleComun.Text = "";
+                txtPuertaComun.Text = "";
+                txtUsuarioComun.Text = "";
+                txtContraseñaComun.Text = "";
+                txtTelefonoComun.Text = "";
+                cbCondicionComun.SelectedIndex = 0;
+                cmbDepartamentoComun.SelectedIndex = 0;
+                cmbZonaComun.SelectedIndex = 0;
+
             }
             catch (Exception ex)
             {
@@ -159,9 +190,7 @@ namespace proyecto.Presentacion
                 txtCalleEmpresa.Text = "";
                 txtPuertaEmpresa.Text = "";
                 cmbDepartamentosEmpresa.SelectedIndex = 0;
-                cmbZonasEmpresa.SelectedIndex = 0; // No es necesario limpiar esto, ya que se establecerá en la zona seleccionada.
-
-                MessageBox.Show("Cliente de empresa creado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cmbZonasEmpresa.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -228,25 +257,13 @@ namespace proyecto.Presentacion
             if (!string.IsNullOrEmpty(selectedDepartamento))
             {
                 // Realizar la consulta a la base de datos para obtener las zonas del departamento seleccionado
-                CargarZonasDesdeBD(selectedDepartamento);
-            }
-        }
-        private void CargarZonasDesdeBD(string departamento)
-        {
-            try
-            {
-                // Llama al método del clienteManager para obtener las zonas del departamento desde la base de datos
-                List<string> zonas = clienteManager.ObtenerZonasPorDepartamentoDesdeBD(departamento);
+                List<string> zonas = clienteManager.ObtenerZonasPorDepartamentoDesdeBD(selectedDepartamento);
 
-                // Limpia cualquier elemento existente en el ComboBox
+                // Limpia cualquier elemento existente en el ComboBox de Cliente Empresa
                 cmbZonasEmpresa.Items.Clear();
 
-                // Agrega las zonas al ComboBox
+                // Agrega las zonas al ComboBox de Cliente Empresa
                 cmbZonasEmpresa.Items.AddRange(zonas.ToArray());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar zonas desde la base de datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -283,6 +300,156 @@ namespace proyecto.Presentacion
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 // Si no es un número ni una tecla de control, suprime el carácter ingresado.
+                e.Handled = true;
+            }
+        }
+
+        private void cmbDepartamentoComun_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedDepartamento = cmbDepartamentoComun.SelectedItem as string;
+
+            if (!string.IsNullOrEmpty(selectedDepartamento))
+            {
+                // Realizar la consulta a la base de datos para obtener las zonas del departamento seleccionado
+                List<string> zonas = clienteManager.ObtenerZonasPorDepartamentoDesdeBD(selectedDepartamento);
+
+                // Limpia cualquier elemento existente en el ComboBox de Cliente Comun
+                cmbZonaComun.Items.Clear();
+
+                // Agrega las zonas al ComboBox de Cliente Comun
+                cmbZonaComun.Items.AddRange(zonas.ToArray());
+            }
+        }
+
+        private void cmbZonaComun_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            // Asegúrate de que el nombre de tus PictureBox siga el patrón "pcbZonaX"
+            string selectedZona = cmbZonaComun.SelectedItem.ToString();
+            int zonaNumber;
+
+            // Extrae el número de la opción seleccionada
+            if (int.TryParse(selectedZona.Replace("Zona", ""), out zonaNumber))
+            {
+                // Oculta todos los PictureBox
+                foreach (Control control in this.Controls)
+                {
+                    if (control is PictureBox)
+                    {
+                        control.Visible = false;
+                    }
+                }
+
+                // Muestra el PictureBox correspondiente a la opción seleccionada
+                Control pictureBoxToShow = this.Controls.Find("pcbZona" + zonaNumber, true).FirstOrDefault();
+                if (pictureBoxToShow is PictureBox)
+                {
+                    pictureBoxToShow.Visible = true;
+                }
+            }
+        }
+
+        private void txtDocumento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Solo permitir números y la tecla de retroceso
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+
+            // Limitar la longitud a 8 dígitos
+            if (txtDocumento.Text.Length >= 8 && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTelefonoComun_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Solo permitir números y la tecla de retroceso
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+
+            // Limitar la longitud a 9 dígitos
+            if (txtTelefonoComun.Text.Length >= 9 && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrimerNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Solo permitir letras y la tecla de retroceso
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+
+            // Limitar la longitud a 20 caracteres
+            if (txtPrimerNombre.Text.Length >= 20 && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSegundoNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Solo permitir letras y la tecla de retroceso
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+
+            // Limitar la longitud a 20 caracteres
+            if (txtSegundoNombre.Text.Length >= 20 && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtUsuarioComun_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Solo permitir letras y la tecla de retroceso
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+
+            // Limitar la longitud a 20 caracteres
+            if (txtUsuarioComun.Text.Length >= 20 && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrimerApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Solo permitir letras y la tecla de retroceso
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+
+            // Limitar la longitud a 20 caracteres
+            if (txtPrimerApellido.Text.Length >= 20 && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSegundoApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Solo permitir letras y la tecla de retroceso
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+
+            // Limitar la longitud a 20 caracteres
+            if (txtSegundoApellido.Text.Length >= 20 && e.KeyChar != (char)Keys.Back)
+            {
                 e.Handled = true;
             }
         }

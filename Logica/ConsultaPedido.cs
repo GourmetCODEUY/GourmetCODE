@@ -23,7 +23,7 @@ namespace Proyecto.Logica
             catch (MySqlException mySqlEx)
             {
                 // Agregar detalles específicos del error de MySQL
-                string mensajeError = "Error al guardar el pedido en la base de datos. Detalles: " + mySqlEx.Message;
+                string mensajeError = mySqlEx.Message;
                 throw new Exception(mensajeError, mySqlEx);
             }
         }

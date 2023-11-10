@@ -111,6 +111,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormClienteSubMenu";
             Text = "FormClienteSubMenu";
+            Load += FormClienteSubMenu_Load;
             ResumeLayout(false);
         }
 
