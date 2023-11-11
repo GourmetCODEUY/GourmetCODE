@@ -109,5 +109,18 @@ namespace proyecto.Persistencia
                 }
             }
         }
+        public void EliminarCliente(int numCliente)
+        {
+            using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
+            {
+                conexion.Open();
+
+                using (MySqlCommand comando = new MySqlCommand("DELETE FROM cliente WHERE Num_Cliente = @Num_Cliente", conexion))
+                {
+                    comando.Parameters.AddWithValue("@Num_Cliente", numCliente);
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

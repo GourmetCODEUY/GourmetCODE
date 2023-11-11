@@ -21,16 +21,47 @@ namespace proyecto.Presentacion
         {
             InitializeComponent();
         }
-        private void GuardarCambios()
+
+        private void CargarClientesEmpresa()
         {
             try
             {
-                DataTable tablaClientesComunes = _clienteManager.ObtenerClientesComunes();
-                DataTable tablaClientesEmpresas = _clienteManager.ObtenerClientesEmpresas();
+                _tablaClientesComunes = _clienteManager.ObtenerClientesComunes();
+                dgvClientesComun.DataSource = _tablaClientesComunes;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar clientes comunes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-                // Realiza cambios en las tablas si es necesario
-                _clienteManager.ActualizarClientesComunes(tablaClientesComunes);
-                _clienteManager.ActualizarClientesEmpresas(tablaClientesEmpresas);
+        private void CargarClientesComunes()
+        {
+            try
+            {
+                _tablaClientesEmpresas = _clienteManager.ObtenerClientesEmpresas();
+                dgvClientesEmpresa.DataSource = _tablaClientesEmpresas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar clientes de empresas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FormModificacionCliente_Load(object sender, EventArgs e)
+        {
+            CargarClientesComunes();
+            CargarClientesEmpresa();
+
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Guardar cambios en la base de datos
+                _clienteManager.ActualizarClientesComunes(_tablaClientesComunes);
+                _clienteManager.ActualizarClientesEmpresas(_tablaClientesEmpresas);
 
                 MessageBox.Show("Cambios guardados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -40,51 +71,15 @@ namespace proyecto.Presentacion
             }
         }
 
-
-
-        private void CargarClientesEmpresa()
+        private void dgvClientesEmpresa_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            try
-            {
-                // Llama al método en la capa lógica para obtener los clientes comunes
-                DataTable clientesComunes = _clienteManager.ObtenerClientesComunes();
-
-                // Asigna los datos al DataGridView dgvClientesComun
-                dgvClientesComun.DataSource = clientesComunes;
-            }
-            catch (Exception ex)
-            {
-                // Maneja la excepción según tus requisitos
-                MessageBox.Show($"Error al cargar clientes comunes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            MessageBox.Show("Error en los datos ingresados. Asegúrese de ingresar números válidos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void CargarClientesComunes()
+        private void dgvClientesComun_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            try
-            {
-                // Llama al método en la capa lógica para obtener los clientes de empresas
-                DataTable clientesEmpresas = _clienteManager.ObtenerClientesEmpresas();
-
-                // Asigna los datos al DataGridView dgvClientesEmpresa
-                dgvClientesEmpresa.DataSource = clientesEmpresas;
-            }
-            catch (Exception ex)
-            {
-                // Maneja la excepción según tus requisitos
-                MessageBox.Show($"Error al cargar clientes de empresas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            MessageBox.Show("Error en los datos ingresados. Asegúrese de ingresar números válidos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        private void FormModificacionCliente_Load(object sender, EventArgs e)
-        {
-            CargarClientesComunes();
-            CargarClientesEmpresa();
-        }
-
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            GuardarCambios();
-        }
-    }
+    }  
 }
+

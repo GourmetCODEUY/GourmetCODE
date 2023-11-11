@@ -32,7 +32,6 @@ namespace proyecto.Presentacion
             dgvClientes.Columns[5].Name = "Condicion_Clinica";
             dgvClientes.Columns[6].Name = "Telefono";
 
-           
             // Configurar la edición de columnas
             ConfigurarEdicionColumnas();
         }

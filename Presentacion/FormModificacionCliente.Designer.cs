@@ -45,6 +45,7 @@
             dgvClientesComun.RowTemplate.Height = 25;
             dgvClientesComun.Size = new Size(431, 377);
             dgvClientesComun.TabIndex = 0;
+            dgvClientesComun.DataError += dgvClientesComun_DataError;
             // 
             // dgvClientesEmpresa
             // 
@@ -54,6 +55,7 @@
             dgvClientesEmpresa.RowTemplate.Height = 25;
             dgvClientesEmpresa.Size = new Size(447, 377);
             dgvClientesEmpresa.TabIndex = 1;
+            dgvClientesEmpresa.DataError += dgvClientesEmpresa_DataError;
             // 
             // label1
             // 

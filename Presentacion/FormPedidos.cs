@@ -80,9 +80,17 @@ namespace proyecto.Presentacion
             {
                 btnConsultaCliente.Visible = false;
             }
+            else if (rolUsuario == 7 || rolUsuario == 8)
+            {
+                btnPedidos.Visible = false;
+                btnConsultaCliente.Visible = true;
+                btnModificacionPedido.Visible = false;
+                btnEliminarPedido.Visible = false;
+            }
             else
             {
-                btnConsultaCliente.Visible = true;
+                MessageBox.Show("Ingrese con un rol compatible para poder visualizar los pedidos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
         }
     }

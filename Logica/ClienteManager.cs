@@ -11,9 +11,11 @@ namespace proyecto.Logica
 
     public class ClienteManager
     {
+
         private readonly ModificarClientesP _clientePersistencia = new ModificarClientesP();
         private BuscarCliente buscarCliente;
         private readonly ClienteRepository clienteRepository;
+     
         private int idDepartamento;
 
         public ClienteManager()
@@ -21,6 +23,7 @@ namespace proyecto.Logica
           
             buscarCliente = new BuscarCliente();
             clienteRepository = new ClienteRepository();
+          
         }
 
         public void ActualizarClientesComunes(DataTable tablaClientesComunes)
@@ -196,6 +199,24 @@ namespace proyecto.Logica
             {
                 MessageBox.Show(ex.Message + ex + MessageBoxButtons.OK + MessageBoxIcon.Error);
 
+            }
+        }
+        public void EliminarCliente(int numCliente)
+        {
+            try
+            {
+                _clientePersistencia.EliminarCliente(numCliente);
+
+                // Agregar cualquier lógica adicional necesaria después de la eliminación
+                Console.WriteLine($"Cliente con el número {numCliente} eliminado exitosamente.");
+
+                // Mostrar mensaje de éxito
+                MessageBox.Show($"Cliente con el número {numCliente} ha sido eliminado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción según sea necesario
+                throw new Exception($"Error al eliminar cliente: {ex.Message}", ex);
             }
         }
     } 

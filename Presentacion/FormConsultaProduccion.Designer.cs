@@ -44,7 +44,7 @@
             dgvConsultaProduccion.Location = new Point(218, 12);
             dgvConsultaProduccion.Name = "dgvConsultaProduccion";
             dgvConsultaProduccion.RowTemplate.Height = 25;
-            dgvConsultaProduccion.Size = new Size(460, 260);
+            dgvConsultaProduccion.Size = new Size(461, 260);
             dgvConsultaProduccion.TabIndex = 0;
             // 
             // ID_Estado_Producto
@@ -82,7 +82,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DimGray;
+            BackColor = Color.FromArgb(66, 125, 125);
             ClientSize = new Size(924, 595);
             Controls.Add(btnConsultaProduccion);
             Controls.Add(dgvConsultaProduccion);

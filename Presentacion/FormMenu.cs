@@ -139,9 +139,14 @@ namespace proyecto.Presentacion
                     this.Text = "Menu - Publico";
                     break;
 
-                case 7://Cliente
+                case 7://Cliente Empresa
                     btnPedidos.Enabled = true;
-                    this.Text = "Menu - Cliente";
+                    this.Text = "Menu - Cliente Comun";
+                    break;
+
+                case 8://Cliente Empresa
+                    btnPedidos.Enabled = true;
+                    this.Text = "Menu - Cliente Empresa";
                     break;
 
                 default:

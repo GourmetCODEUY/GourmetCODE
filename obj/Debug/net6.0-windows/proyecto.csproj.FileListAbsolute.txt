@@ -94,7 +94,12 @@ C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.Pres
 C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.Presentacion.FormTransporte.resources
 C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.Presentacion.FormUsuarios.resources
 C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.Presentacion.FormZonas.resources
+C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.Properties.Resources.resources
 C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.csproj.GenerateResource.cache
+C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.AssemblyInfoInputs.cache
+C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.AssemblyInfo.cs
+C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.csproj.CoreCompileInputs.cache
 C:\Users\maurito\Desktop\GourmetCODE-main\bin\Debug\net6.0-windows\proyecto.exe
 C:\Users\maurito\Desktop\GourmetCODE-main\bin\Debug\net6.0-windows\proyecto.dll.config
 C:\Users\maurito\Desktop\GourmetCODE-main\bin\Debug\net6.0-windows\proyecto.deps.json
@@ -118,11 +123,6 @@ C:\Users\maurito\Desktop\GourmetCODE-main\bin\Debug\net6.0-windows\runtimes\win-
 C:\Users\maurito\Desktop\GourmetCODE-main\bin\Debug\net6.0-windows\runtimes\win-x64\native\krb5_64.dll
 C:\Users\maurito\Desktop\GourmetCODE-main\bin\Debug\net6.0-windows\runtimes\win-x64\native\krbcc64.dll
 C:\Users\maurito\Desktop\GourmetCODE-main\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
-C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.Properties.Resources.resources
-C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.AssemblyInfoInputs.cache
-C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.AssemblyInfo.cs
-C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.csproj.CoreCompileInputs.cache
 C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.csproj.CopyComplete
 C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\proyecto.dll
 C:\Users\maurito\Desktop\GourmetCODE-main\obj\Debug\net6.0-windows\refint\proyecto.dll

@@ -91,7 +91,7 @@
             btnConsultaCliente.Font = new Font("Sitka Banner", 15.7499981F, FontStyle.Regular, GraphicsUnit.Point);
             btnConsultaCliente.ForeColor = Color.White;
             btnConsultaCliente.ImageAlign = ContentAlignment.MiddleLeft;
-            btnConsultaCliente.Location = new Point(89, 287);
+            btnConsultaCliente.Location = new Point(89, 136);
             btnConsultaCliente.Name = "btnConsultaCliente";
             btnConsultaCliente.Size = new Size(233, 51);
             btnConsultaCliente.TabIndex = 10;
