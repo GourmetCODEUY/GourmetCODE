@@ -76,7 +76,7 @@ namespace proyecto.Presentacion
 
         private void FormPedidos_Load(object sender, EventArgs e)
         {
-            if (rolUsuario == 3)
+            if (rolUsuario == 3 || rolUsuario == 2)
             {
                 btnConsultaCliente.Visible = false;
             }

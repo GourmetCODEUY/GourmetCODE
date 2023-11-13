@@ -124,18 +124,18 @@ namespace proyecto.Presentacion
                     break;
 
                 case 4://Cocina
-                    btnPedidos.Enabled = true;
-                    btnSucursales.Enabled = true;
+                    btnPedidos.Enabled = false;
+                    btnSucursales.Enabled = false;
                     this.Text = "Menu - Cocina";
                     break;
 
                 case 5://Transporte
-                    btnTransporte.Enabled = true;
+                    btnTransporte.Enabled = false;
                     this.Text = "Menu - Transporte";
                     break;
 
                 case 6://Publico
-                    btnClientes.Enabled = true;
+                    btnClientes.Enabled = false;
                     this.Text = "Menu - Publico";
                     break;
 
